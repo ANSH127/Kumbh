@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function WhyChooseUs() {
   return (
@@ -6,7 +5,7 @@ export default function WhyChooseUs() {
       <h1 className="text-3xl font-bold text-center text-black">
         Why Choose Us?
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-32 gap-y-8 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-24 gap-y-8 mt-4 p-10">
         <div className="bg-[#F4F2E9] p-4 rounded-lg shadow-lg">
           <h1 className="text-xl font-bold text-black text-center">
             Local Experts
@@ -62,7 +61,7 @@ export default function WhyChooseUs() {
           </p>
         </div>
       </div>
-      <div className="text-center text-2xl font-semibold mt-4">
+      <div className="text-center text-xl font-semibold mt-4">
         *We promise a memorable journey that goes beyond the usual travel
         experience. Let us make your trip unforgettable!
       </div>

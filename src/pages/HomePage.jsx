@@ -5,10 +5,6 @@ import ImportantDates from "../components/ImportantDates";
 import Logo from "../assets/img/logo.png";
 import NearbyCitiesPackages from "../components/NearbyCitiesPackages";
 import TourPackages from "../components/TourPackages";
-import FoodPackages from "../components/FoodPackages";
-import TrustedBy from "../components/TrustedBy";
-import WhyChooseUs from "../components/WhyChooseUs";
-import Aboutintro from "../components/Aboutintro";
 
 export default function HomePage() {
   return (
@@ -31,16 +27,7 @@ export default function HomePage() {
       <ImportantDates />
       <TourPackages />
       <NearbyCitiesPackages />
-      <Aboutintro />
-
-      {/* why choose us */}
-      <WhyChooseUs />
-
-      {/* Trusted by 500+ Devotees */}
-      <TrustedBy />
-
-      {/* food packages */}
-      <FoodPackages />
+      
 
       <Footer />
     </div>

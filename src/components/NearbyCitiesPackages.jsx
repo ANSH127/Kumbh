@@ -8,6 +8,10 @@ import badeHanumanImage from "../assets/img/BadeHanuman.png";
 import mankameshwarImage from "../assets/img/Mankameshwar.png";
 import shankarVImage from "../assets/img/ShankarV.png";
 import logoImage from "../assets/img/logo.png";
+import TrustedBy from "../components/TrustedBy";
+import WhyChooseUs from "../components/WhyChooseUs";
+import Aboutintro from "./Aboutintro";
+import FoodPackages from "./FoodPackages";
 
 const NearbyCitiesPackages = () => {
   return (
@@ -144,6 +148,11 @@ const NearbyCitiesPackages = () => {
           <h1 className="text-[2.2vw] sm:text-[1.1vw] mt-1">Junction)</h1>
         </div>
       </div>
+
+      <Aboutintro />
+        <WhyChooseUs />
+        <TrustedBy />
+        <FoodPackages />
 
       {/* Map */}
       {/* Mobile View */}

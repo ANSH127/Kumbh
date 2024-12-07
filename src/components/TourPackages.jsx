@@ -1,13 +1,5 @@
-import React, { useRef } from "react";
-import varanasiImage from "../assets/img/varanasi.png";
-import vindhyachalImage from "../assets/img/vindhyachal.png";
-import chitrakootImage from "../assets/img/chitrakoot.png";
-import ayodhyaImage from "../assets/img/ayodhya.png";
-import bhardwajImage from "../assets/img/Bhardwaj.png";
-import badeHanumanImage from "../assets/img/BadeHanuman.png";
-import mankameshwarImage from "../assets/img/Mankameshwar.png";
-import shankarVImage from "../assets/img/ShankarV.png";
-import logoImage from "../assets/img/logo.png";
+import  { useRef } from "react";
+
 import T1 from "../assets/img/t1.png";
 
 import Chip from "@mui/material/Chip";

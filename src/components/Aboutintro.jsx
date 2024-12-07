@@ -32,7 +32,7 @@ export default function Aboutintro() {
             offering an unforgettable experience of spirituality and collective
             devotion to millions of participants.
           </p>
-          <div className="flex flex-col md:flex-row justify-center mt-4">
+          <div className="flex flex-col md:flex-row justify-center mt-4 p-3">
             <div className="flex items-center mb-4 md:mb-0">
               <img src={Icon1} alt="Icon1" className="w-12 h-12" />
               <h1 className="text-sm ml-3">
