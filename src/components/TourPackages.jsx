@@ -8,7 +8,7 @@ import badeHanumanImage from "../assets/img/BadeHanuman.png";
 import mankameshwarImage from "../assets/img/Mankameshwar.png";
 import shankarVImage from "../assets/img/ShankarV.png";
 import logoImage from "../assets/img/logo.png";
-import T1 from "../assets/img/T1.png";
+import T1 from "../assets/img/t1.png";
 
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
