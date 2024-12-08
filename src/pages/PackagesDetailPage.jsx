@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PackageTop from "../assets/img/Packagetop.png";
 import Hero1 from "../assets/img/Hero1.jpeg";
 import Footer from "../components/Footer";
+import EnquiryModel from "../components/EnquiryModel";
+import { Button } from "@mui/material";
 
 export default function PackagesDetailPage() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+
+    // i want to run 1 time handle open function after 5 seconds
+    setTimeout(() => {
+      handleOpen();
+    }, 5000);
+  }, []);
+
   return (
     <div>
       <Navbar />
+      <EnquiryModel   open={open} handleClose={handleClose} handleOpen={handleOpen} />
+    
       <div className="flex justify-center items-center mt-[10%] md:mt-[8%]  w-full">
         {/* Main Container */}
         <div className="w-[90%] rounded-3xl shadow-lg overflow-hidden">
