@@ -1,11 +1,12 @@
-import * as React from "react";
+
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
+import { enquiryCollection } from "../api/firebase";
+import { addDoc } from "firebase/firestore";
 
 const style = {
   position: "absolute",
@@ -33,7 +34,43 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
   const [date, setDate] = useState("");
   const [duration, setDuration] = useState("");
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      name === "" ||
+      email === "" ||
+      phone === "" ||
+      country === "" ||
+      date === "" ||
+      duration === ""
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    try {
+      const docRef = await addDoc(enquiryCollection, {
+        name: name,
+        email: email,
+        phone: phone,
+        country: country,
+        date: date,
+        duration: duration,
+      });
+      if (docRef.id) {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setCountry("");
+        setDate("");
+        setDuration("");
+        setShowModal(true);
+      }
+    } catch (e) {
+      alert("Error adding document: ", e);
+      console.error("Error adding document: ", e);
+    }
+  };
   const handleOkayClick = () => {
     setShowModal(false);
   };
@@ -54,7 +91,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style} className="w-full md:w-[80%]">
+          <Box sx={style} className="w-full md:w-[70%]">
             <h1 className="text-center text-[5vw] md:text-[3vw] font-bold mb-6 font-serif">
               Enquiry Form
             </h1>
