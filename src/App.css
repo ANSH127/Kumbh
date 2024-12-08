@@ -71,7 +71,6 @@ body{
     width: 250px;
     height: fit-content;
     background-color: #F49330;
-    border-bottom-right-radius: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: start;
