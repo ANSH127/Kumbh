@@ -3,8 +3,9 @@ import PackageTop from "../assets/img/Packagetop.png";
 import Navbar from "../components/Navbar";
 import Hero3 from "../assets/img/Hero3.jpeg";
 import Footer from "../components/Footer";
-
+import { useNavigate } from "react-router-dom";
 export default function Packages() {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
@@ -34,7 +35,7 @@ export default function Packages() {
           </div>
 
           {/* Bottom Section with Dates and Buttons */}
-          <div className="bg-[#F88820] p-4 md:p-6 space-y-4 text-center flex flex-row justify-around  space-y-0 font-serif">
+          <div className="bg-[#F88820] p-4 md:p-6  text-center flex flex-row justify-around  space-y-0 font-serif">
             {/* Event Card 1 */}
             <div className="space-y-2 text-black">
               <h2 className="text-[2.5vw] font-semibold">Paush Poornima</h2>
@@ -60,254 +61,41 @@ export default function Packages() {
           {/* Card Template */}
           
           <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
+            <img src={Hero3} alt="" className="rounded-t-2xl " />
+            <div className="bg-orange-400 rounded-b-2xl pb-4">
               <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
+                <h3 className="text-xs md:text-base font-semibold">
                   Non-Shahi Snan Kumbh Mela
                 </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
+                <p className="text-xs md:text-sm text-gray-600">2N/3D Tour Package</p>
               </div>
               
               <div className="text-center pb-3">
 
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
+              <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
                 ₹31,999
               </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
+              <del className="text-sm md:text-lg font-semibold text-black text-center">₹35,999</del>
               </div>
               <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
+               
+                  <button className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+
+                  >
                     Details →
                   </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
+               
+                  <button className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+
+                  onClick={() => navigate("/packages/1")}
+                  >
                     Enquire Now →
                   </button>
-                </a>
+                
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-3xl h-[30vh] w-auto" />
-            <div className="bg-orange-400 rounded-b-3xl pb-4">
-              <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                <h3 className="text-base font-semibold">
-                  Non-Shahi Snan Kumbh Mela
-                </h3>
-                <p className="text-sm text-gray-600">2N/3D Tour Package</p>
-              </div>
-              
-              <div className="text-center pb-3">
-
-              <p className="text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-lg font-semibold text-black text-center">₹35,999</del>
-              </div>
-              <div className="flex justify-evenly gap-2">
-                <a href="Package1.html">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Details →
-                  </button>
-                </a>
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-white text-black font-semibold px-3 py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300">
-                    Enquire Now →
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
           
         </div>
         <div 
