@@ -1,4 +1,4 @@
-import React from "react";
+
 import PackageTop from "../assets/img/Packagetop.png";
 import Navbar from "../components/Navbar";
 import Hero3 from "../assets/img/Hero3.jpeg";
@@ -59,124 +59,136 @@ export default function Packages() {
       <div>
         <div className="container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 md:px-0 mt-10">
           {/* Card Template */}
-          
+
           <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-2xl w-auto h-[140px] md:h-auto " />
+            <img
+              src={Hero3}
+              alt=""
+              className="rounded-t-2xl w-auto h-[140px] md:h-auto "
+            />
             <div className="bg-orange-400 rounded-b-2xl pb-4">
               <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
                 <h3 className="text-xs md:text-base font-semibold">
                   Non-Shahi Snan Kumbh Mela
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600">2N/3D Tour Package</p>
+                <p className="text-xs md:text-sm text-gray-600">
+                  2N/3D Tour Package
+                </p>
               </div>
-              
-              <div className="text-center pb-3">
 
-              <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-sm md:text-lg font-semibold text-black text-center">₹35,999</del>
+              <div className="text-center pb-3">
+                <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
+                  ₹31,999
+                </p>
+                <del className="text-sm md:text-lg font-semibold text-black text-center">
+                  ₹35,999
+                </del>
               </div>
               <div className="flex justify-evenly gap-2">
-               
-                  <button className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
-                  >
-                    Details →
-                  </button>
-               
-                  <button className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
+                <button
+                  className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                   onClick={() => navigate("/packages/1")}
-                  >
-                    Enquire Now →
-                  </button>
-                
+                >
+                  Details →
+                </button>
+
+                <button
+                  className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                  onClick={() => navigate("/enquiry")}
+                >
+                  Enquire Now →
+                </button>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-2xl w-auto h-[140px] md:h-auto " />
+            <img
+              src={Hero3}
+              alt=""
+              className="rounded-t-2xl w-auto h-[140px] md:h-auto "
+            />
             <div className="bg-orange-400 rounded-b-2xl pb-4">
               <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
                 <h3 className="text-xs md:text-base font-semibold">
                   Non-Shahi Snan Kumbh Mela
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600">2N/3D Tour Package</p>
+                <p className="text-xs md:text-sm text-gray-600">
+                  2N/3D Tour Package
+                </p>
               </div>
-              
-              <div className="text-center pb-3">
 
-              <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-sm md:text-lg font-semibold text-black text-center">₹35,999</del>
+              <div className="text-center pb-3">
+                <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
+                  ₹31,999
+                </p>
+                <del className="text-sm md:text-lg font-semibold text-black text-center">
+                  ₹35,999
+                </del>
               </div>
               <div className="flex justify-evenly gap-2">
-               
-                  <button className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
-                  >
-                    Details →
-                  </button>
-               
-                  <button className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
+                <button
+                  className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                   onClick={() => navigate("/packages/1")}
-                  >
-                    Enquire Now →
-                  </button>
-                
+                >
+                  Details →
+                </button>
+
+                <button
+                  className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                  onClick={() => navigate("/enquiry")}
+                >
+                  Enquire Now →
+                </button>
               </div>
             </div>
           </div>
           <div className="flex flex-col relative overflow-hidden">
-            <img src={Hero3} alt="" className="rounded-t-2xl w-auto h-[140px] md:h-auto " />
+            <img
+              src={Hero3}
+              alt=""
+              className="rounded-t-2xl w-auto h-[140px] md:h-auto "
+            />
             <div className="bg-orange-400 rounded-b-2xl pb-4">
               <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
                 <h3 className="text-xs md:text-base font-semibold">
                   Non-Shahi Snan Kumbh Mela
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600">2N/3D Tour Package</p>
+                <p className="text-xs md:text-sm text-gray-600">
+                  2N/3D Tour Package
+                </p>
               </div>
-              
-              <div className="text-center pb-3">
 
-              <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
-                ₹31,999
-              </p>
-              <del className="text-sm md:text-lg font-semibold text-black text-center">₹35,999</del>
+              <div className="text-center pb-3">
+                <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
+                  ₹31,999
+                </p>
+                <del className="text-sm md:text-lg font-semibold text-black text-center">
+                  ₹35,999
+                </del>
               </div>
               <div className="flex justify-evenly gap-2">
-               
-                  <button className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
-                  >
-                    Details →
-                  </button>
-               
-                  <button className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-
+                <button
+                  className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                   onClick={() => navigate("/packages/1")}
-                  >
-                    Enquire Now →
-                  </button>
-                
+                >
+                  Details →
+                </button>
+
+                <button
+                  className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                  onClick={() => navigate("/enquiry")}
+                >
+                  Enquire Now →
+                </button>
               </div>
             </div>
           </div>
-
-          
         </div>
-        <div 
-            className=" w-11/12   rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14"
-        >
-            <h1
-                className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]"
-            >
+        <div className=" w-11/12   rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14">
+          <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
             Nearby Cities Packages
-            </h1>
+          </h1>
         </div>
       </div>
       <Footer />
