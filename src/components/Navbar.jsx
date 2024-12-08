@@ -28,7 +28,7 @@ return (
             <a href="Blog1.html" className="hover-effect">Blogs</a>
             <a href="Gallery.html" className="hover-effect">Picture Gallery</a>
             <Link to="/Packages" className="hover-effect">Packages</Link>
-            <a href="Enquiry.html" className="hover-effect bg-[#F88820] rounded-lg px-5 py-2 lg:px-9">Enquire Now</a>
+            <Link to= "/enquiry"  className="hover-effect bg-[#F88820] rounded-lg px-5 py-2 lg:px-9">Enquire Now</Link>
         </div>
 
         <div className="max-w-screen-xl items-center mx-auto px-4 py-2 md:hidden flex justify-end">
