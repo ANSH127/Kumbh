@@ -6,6 +6,11 @@
     font-weight: 900; 
   }
 
+body{
+    background-color: #F4F2E9;
+
+}
+
 
   .agbalumo-regular {
     font-family: "Agbalumo", serif;
@@ -62,7 +67,7 @@
 #navbar-hamburger {
     position: fixed;
     top: 0;
-    left: -100%; /* Initially hidden off the screen */
+    right: -100%; /* Initially hidden off the screen */
     width: 250px;
     height: fit-content;
     background-color: #F49330;
@@ -79,7 +84,7 @@
 
 /* Show the navbar when it is active */
 #navbar-hamburger.active {
-    left: 0;
+    right: 0;
 }
 
 /* Adjust the hamburger button to ensure visibility */

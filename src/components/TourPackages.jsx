@@ -1,12 +1,12 @@
-import  { useRef } from "react";
+import { useRef } from "react";
 
 import T1 from "../assets/img/t1.png";
 
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 export default function TourPackages() {
   const scrollRef = useRef(null);
@@ -41,7 +41,11 @@ export default function TourPackages() {
         >
           {/* Card 1 */}
           <div className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] ">
-            <img className="w-full h-auto shadow-none" src={T1} alt="Prime Hotels" />
+            <img
+              className="w-full h-auto shadow-none"
+              src={T1}
+              alt="Prime Hotels"
+            />
             <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3">
               <Stack direction="row" spacing={1}>
                 <Chip label="Trending" color="primary" size="small" />
@@ -49,17 +53,27 @@ export default function TourPackages() {
                 <Rating name="read-only" value={2} readOnly />
               </Stack>
               <h1 className="font-bold">3 Days 2 N Prayagraj</h1>
-              <p className="text-sm mt-2 font-bold">3 Days 2 Night | Private Cab | Guide Support</p>
+              <p className="text-sm mt-2 font-bold">
+                3 Days 2 Night | Private Cab | Guide Support
+              </p>
               <p className="text-2xl mt-2 font-bold">₹23,999/-</p>
               <div className="flex justify-between mt-4 pb-4 px-4">
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Details→</button>
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Enquire Now→</button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Details→
+                </button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Enquire Now→
+                </button>
               </div>
             </div>
           </div>
           {/* Card 1 */}
           <div className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] ">
-            <img className="w-full h-auto shadow-none" src={T1} alt="Prime Hotels" />
+            <img
+              className="w-full h-auto shadow-none"
+              src={T1}
+              alt="Prime Hotels"
+            />
             <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3">
               <Stack direction="row" spacing={1}>
                 <Chip label="Trending" color="primary" size="small" />
@@ -67,17 +81,33 @@ export default function TourPackages() {
                 <Rating name="read-only" value={2} readOnly />
               </Stack>
               <h1 className="font-bold">3 Days 2 N Prayagraj</h1>
-              <p className="text-sm mt-2 font-bold">3 Days 2 Night | Private Cab | Guide Support</p>
-              <p className="text-2xl mt-2 font-bold">₹23,999/-</p>
+              <p className="text-sm mt-2 font-bold">
+                3 Days 2 Night | Private Cab | Guide Support
+              </p>
+              <p className="text-2xl mt-2 font-bold ">
+
+                  ₹19,999/-
+              <del className="pl-1
+                text-xl
+              ">₹23,999/-</del>
+                </p>
               <div className="flex justify-between mt-4 pb-4 px-4">
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Details→</button>
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Enquire Now→</button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Details→
+                </button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Enquire Now→
+                </button>
               </div>
             </div>
           </div>
           {/* Card 1 */}
           <div className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] ">
-            <img className="w-full h-auto shadow-none" src={T1} alt="Prime Hotels" />
+            <img
+              className="w-full h-auto shadow-none"
+              src={T1}
+              alt="Prime Hotels"
+            />
             <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3">
               <Stack direction="row" spacing={1}>
                 <Chip label="Trending" color="primary" size="small" />
@@ -85,17 +115,27 @@ export default function TourPackages() {
                 <Rating name="read-only" value={2} readOnly />
               </Stack>
               <h1 className="font-bold">3 Days 2 N Prayagraj</h1>
-              <p className="text-sm mt-2 font-bold">3 Days 2 Night | Private Cab | Guide Support</p>
+              <p className="text-sm mt-2 font-bold">
+                3 Days 2 Night | Private Cab | Guide Support
+              </p>
               <p className="text-2xl mt-2 font-bold">₹23,999/-</p>
               <div className="flex justify-between mt-4 pb-4 px-4">
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Details→</button>
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Enquire Now→</button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Details→
+                </button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Enquire Now→
+                </button>
               </div>
             </div>
           </div>
           {/* Card 1 */}
           <div className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] ">
-            <img className="w-full h-auto shadow-none" src={T1} alt="Prime Hotels" />
+            <img
+              className="w-full h-auto shadow-none"
+              src={T1}
+              alt="Prime Hotels"
+            />
             <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3">
               <Stack direction="row" spacing={1}>
                 <Chip label="Trending" color="primary" size="small" />
@@ -103,17 +143,27 @@ export default function TourPackages() {
                 <Rating name="read-only" value={2} readOnly />
               </Stack>
               <h1 className="font-bold">3 Days 2 N Prayagraj</h1>
-              <p className="text-sm mt-2 font-bold">3 Days 2 Night | Private Cab | Guide Support</p>
+              <p className="text-sm mt-2 font-bold">
+                3 Days 2 Night | Private Cab | Guide Support
+              </p>
               <p className="text-2xl mt-2 font-bold">₹23,999/-</p>
               <div className="flex justify-between mt-4 pb-4 px-4">
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Details→</button>
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Enquire Now→</button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Details→
+                </button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Enquire Now→
+                </button>
               </div>
             </div>
           </div>
           {/* Card 1 */}
           <div className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] ">
-            <img className="w-full h-auto shadow-none" src={T1} alt="Prime Hotels" />
+            <img
+              className="w-full h-auto shadow-none"
+              src={T1}
+              alt="Prime Hotels"
+            />
             <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3">
               <Stack direction="row" spacing={1}>
                 <Chip label="Trending" color="primary" size="small" />
@@ -121,11 +171,17 @@ export default function TourPackages() {
                 <Rating name="read-only" value={2} readOnly />
               </Stack>
               <h1 className="font-bold">3 Days 2 N Prayagraj</h1>
-              <p className="text-sm mt-2 font-bold">3 Days 2 Night | Private Cab | Guide Support</p>
+              <p className="text-sm mt-2 font-bold">
+                3 Days 2 Night | Private Cab | Guide Support
+              </p>
               <p className="text-2xl mt-2 font-bold">₹23,999/-</p>
               <div className="flex justify-between mt-4 pb-4 px-4">
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Details→</button>
-                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">Enquire Now→</button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Details→
+                </button>
+                <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm">
+                  Enquire Now→
+                </button>
               </div>
             </div>
           </div>
