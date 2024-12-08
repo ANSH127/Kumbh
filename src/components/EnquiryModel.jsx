@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: "absolute",
@@ -57,6 +58,12 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
             <h1 className="text-center text-[5vw] md:text-[3vw] font-bold mb-6 font-serif">
               Enquiry Form
             </h1>
+
+            <div className="absolute top-2 right-2">
+              <CloseIcon fontSize={"30px"} onClick={handleClose} className="text-black  cursor-pointer
+               text-4xl
+              " />
+            </div>
 
             {/* Form Section */}
             <form
