@@ -14,6 +14,7 @@ export default function EnquiryPage() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState("");
   const [duration, setDuration] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +24,9 @@ export default function EnquiryPage() {
       phone === "" ||
       country === "" ||
       date === "" ||
-      duration === ""
+      duration === "" ||
+      msg === ""
+
     ) {
       alert("Please fill all the fields");
       return;
@@ -37,6 +40,7 @@ export default function EnquiryPage() {
         country: country,
         date: date,
         duration: duration,
+        msg: msg,
       });
       if (docRef.id) {
         setName("");
@@ -201,6 +205,25 @@ export default function EnquiryPage() {
               className="w-full border-b-2 border-black bg-transparent focus:outline-none focus:border-blue-800 py-2 text-black placeholder:text-black"
               required
               min="1"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="date"
+              className="block md:text-[1.5vw] font-medium mb-1"
+            >
+              Your Specific Requirment:
+            </label>
+            <textarea
+            
+              id="msg"
+              name="msg"
+              value={msg}
+              onChange={(e) => setMsg(e.target.value)}
+              placeholder="Enter your Specific Requirement"
+              className="w-full border-b-2 border-black bg-transparent focus:outline-none focus:border-blue-800 py-2 text-black placeholder:text-black"
+              required
             />
           </div>
 

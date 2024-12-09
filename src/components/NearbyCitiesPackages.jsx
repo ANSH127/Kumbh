@@ -12,8 +12,10 @@ import TrustedBy from "../components/TrustedBy";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Aboutintro from "./Aboutintro";
 import FoodPackages from "./FoodPackages";
+import { useNavigate } from "react-router-dom";
 
 const NearbyCitiesPackages = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-auto bg-[#F4F2E9] flex flex-col justify-center pb-12">
       <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
@@ -86,7 +88,9 @@ const NearbyCitiesPackages = () => {
         </div>
       </div>
 
-      <h1 className="hover-effect bg-[#F88820] rounded-lg md:rounded-xl px-4 py-2 lg:px-5 w-fit mx-auto font-bold text-[4vw] md:text-[1.5vw] mt-10 md:mt-12">
+      <h1 className="hover-effect bg-[#F88820] rounded-lg md:rounded-xl px-4 py-2 lg:px-5 w-fit mx-auto font-bold text-[4vw] md:text-[1.5vw] mt-10 md:mt-12"
+      onClick={() => navigate("/enquiry")}
+      >
         Customize
       </h1>
       <h1 className="text-center text-[3vw] md:text-[1.5vw] mt-2 md:mt-4">

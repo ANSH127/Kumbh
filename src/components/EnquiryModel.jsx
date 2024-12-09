@@ -33,6 +33,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState("");
   const [duration, setDuration] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +43,8 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
       phone === "" ||
       country === "" ||
       date === "" ||
-      duration === ""
+      duration === ""||
+      msg === ""
     ) {
       alert("Please fill all the fields");
       return;
@@ -56,6 +58,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
         country: country,
         date: date,
         duration: duration,
+        msg: msg,
       });
       if (docRef.id) {
         setName("");
@@ -91,7 +94,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style} className="w-full md:w-[70%]">
+          <Box sx={style} className="w-full md:w-[70%] overflow-y-auto">
             <h1 className="text-center text-[5vw] md:text-[3vw] font-bold mb-6 font-serif">
               Enquiry Form
             </h1>
@@ -225,6 +228,24 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
                   min="1"
                 />
               </div>
+              <div>
+            <label
+              htmlFor="date"
+              className="block md:text-[1.5vw] font-medium mb-1"
+            >
+              Your Specific Requirment:
+            </label>
+            <textarea
+            
+              id="msg"
+              name="msg"
+              value={msg}
+              onChange={(e) => setMsg(e.target.value)}
+              placeholder="Enter your Specific Requirment"
+              className="w-full border-b-2 border-black bg-transparent focus:outline-none focus:border-blue-800 py-2 text-black placeholder:text-black"
+              required
+            />
+          </div>
 
               <div className="md:col-span-2 mx-auto">
                 <button

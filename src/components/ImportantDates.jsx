@@ -3,10 +3,10 @@
 
 const ImportantDates = () => {
   const dates = [
-    { day: 15, month: 'Jan', event: 'Mauni Amavasya' },
-    { day: 15, month: 'Jan', event: 'Mauni Amavasya' },
-    { day: 15, month: 'Jan', event: 'Mauni Amavasya' },
-    { day: 15, month: 'Jan', event: 'Mauni Amavasya' },
+    { day: 13, month: 'Jan', event: 'Paush Poornima' },
+    { day: 14, month: 'Jan', event: 'Makar Sankranti' },
+    { day: 29, month: 'Jan', event: 'Mauni Amavasya' },
+    { day: 3, month: 'Feb', event: 'Basant Panchami' },
   ];
 
   return (

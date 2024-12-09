@@ -35,10 +35,10 @@ body{
 }
 
 .carousel-images img.active {
-    opacity: 1; /* First image will be visible on load */
+    opacity: 1; /* Active image will be visible */
     z-index: 1;
 }
-
+  
 /* Custom Font Styles */
 .agbalumo-bold {
     font-family: 'Agbalumo', serif;
