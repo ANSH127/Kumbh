@@ -4,16 +4,35 @@ import PackageTop from "../assets/img/Packagetop.png";
 import Hero1 from "../assets/img/Hero1.jpeg";
 import Footer from "../components/Footer";
 import EnquiryModel from "../components/EnquiryModel";
-import { Button } from "@mui/material";
+import { client,builder } from "../api/SanityClient";
+import { useParams } from "react-router-dom";
 
 export default function PackagesDetailPage() {
   const [open, setOpen] = React.useState(false);
+  const [section, setSection] = React.useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const { id } = useParams();
+  const [packageData, setPackageData] = React.useState(null);
+
+  const fetchPackageData = async () => {
+    const data = await client.getDocument(id);
+    console.log(data);
+    
+    setPackageData(data);
+  }
+
+
+
+
+
+
+
   useEffect(() => {
 
+    fetchPackageData();
     // i want to run 1 time handle open function after 5 seconds
     // setTimeout(() => {
     //   handleOpen();
@@ -77,11 +96,11 @@ export default function PackagesDetailPage() {
         style={{ fontFamily: "andika" }}
       >
         <h1 className="text-[5.5vw] md:text-[3vw] font-bold">
-          Non-Shahi Snan Kumbh Mela
+          {packageData?.name}
         </h1>
         <div className="flex md:ml-2 md:mt-4">
           <span className="text-[4vw] md:text-[2vw] font-semibold">
-            2N/3D Tour Package
+            {packageData?.description}
             <span className="bg-orange-400  text-base md:text-lg rounded-3xl text-black h-fit px-2 ml-1 mb-1">
               Land Only
             </span>
@@ -96,31 +115,57 @@ export default function PackagesDetailPage() {
           <div className="w-full  relative ">
             <div className="w-auto max-h-[80vh] h-[68vh] relative md:ml-[8%] ">
               <img
-                src={Hero1}
+                src={packageData?.image? builder.image(packageData?.image).url():Hero1}
                 alt="Package"
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
             <div className=" md:ml-[8%] mt-[3%] ">
               <div className="flex flex-wrap justify-center md:justify-around gap-1 md:gap-2 mx-auto">
-                <button className="bg-orange-400 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 shadow-md active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
+                <button className={`
+                  ${section==="overview"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
+                  onClick={() => setSection("overview")}
+                >
                   OverView
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
+                <button className={`
+                  ${section==="itinerary"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
+                  onClick={() => setSection("itinerary")}
+
+
+                >
                   Day wise Itinerary
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
+                <button 
+                className={`
+                  ${section==="residential"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
+                  
+                onClick={() => setSection("residential")}
+                >
                   Residential Details
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
+                <button className={`
+                  ${section==="inclusion&exclusion"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
+                  onClick={() => setSection("inclusion&exclusion")}
+                >
                   Inclusion/Exclusion
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
+                <button className={`
+                  ${section==="terms&faq"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
+                  onClick={() => setSection("terms&faq")}
+                >
                   Additional Info
                 </button>
               </div>
               {/* OverView */}
-              <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
+              {
+                (section==="overview" || section==="")  &&
+                <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
                 <div className="flex h-fit">
                   <div className="bg-orange-400 w-2 h-8"></div>
                   <h3 className="text-xl font-bold text-left ml-2">
@@ -128,17 +173,14 @@ export default function PackagesDetailPage() {
                   </h3>
                 </div>
                 <p className="text-black text-left p-4">
-                  Experience 4 Nights and 6 Days in Prayagraj with three daily
-                  meals, guided sightseeing, and visits to all famous
-                  attractions, including the sacred Sangam and historic temples.
-                  This package offers a rich, immersive journey through
-                  Prayagraj’s cultural and spiritual landmarks, creating
-                  meaningful memories for every visitor.
+                  {packageData?.overview}
                 </p>
-              </div>
+              </div>}
 
               {/* Residential Details */}
-              <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
+              {
+                (section==="residential" || section==="") &&
+                <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
                 <div className="flex h-fit">
                   <div className="bg-orange-400 w-2 h-8"></div>
                   <h3 className="text-xl font-bold text-left ml-2">
@@ -146,9 +188,11 @@ export default function PackagesDetailPage() {
                   </h3>
                 </div>
                 <div></div>
-              </div>
+              </div>}
 
-              <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
+              {
+                (section==="itinerary"|| section==="") &&
+                <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
                 <div className="flex h-fit">
                   <div className="bg-orange-400 w-2 h-8"></div>
                   <h3 className="text-xl font-bold text-left ml-2">
@@ -159,107 +203,52 @@ export default function PackagesDetailPage() {
                   <div className="p-6 rounded-3xl mx-auto">
                     {/* Itinerary List */}
                     <div className="space-y-6">
-                      {/* Day 1 */}
-                      <div className="flex items-start space-x-4">
-                        {/* Day Circle */}
-                        <div className="flex flex-col items-center">
-                          <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Day 1
-                          </div>
-                          {/* Line Connecting Circles */}
-                          <div className="h-full border-l-2 border-gray-300"></div>
-                        </div>
-                        {/* Content Box */}
-                        <div className="flex-1 rounded-xl shadow-md overflow-hidden text-left">
-                          <h3 className="font-bold bg-[#CDE6FE] p-2">Day 1</h3>
-                          <p className="text-gray-700 p-4">
-                            Description of activities for Day 1 goes here.
-                          </p>
-                        </div>
-                      </div>
+                      
 
-                      {/* Day 2 */}
-                      <div className="flex items-start space-x-4 text-left">
-                        <div className="flex flex-col items-center">
-                          <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Day 2
+                      {
+                        packageData?.itinerary.map((day, index) => (
+                          <div className="flex items-start space-x-4" key={index}>
+                            <div className="flex flex-col items-center">
+                              <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
+                                Day {index + 1}
+                              </div>
+                              <div className="h-full border-l-2 border-gray-300"></div>
+                            </div>
+                            <div className="flex-1 rounded-xl shadow-md overflow-hidden">
+                              <h3 className="font-bold bg-[#CDE6FE] p-2">Day {index + 1}</h3>
+                              <p className="text-gray-700 p-4">
+                                {day}
+                              </p>
+                            </div>
                           </div>
-                          <div className="h-full border-l-2 border-gray-300"></div>
-                        </div>
-                        <div className="flex-1 rounded-xl shadow-md overflow-hidden">
-                          <h3 className="font-bold bg-[#CDE6FE] p-2">Day 2</h3>
-                          <p className="text-gray-700 p-4">
-                            Description of activities for Day 2 goes here.
-                          </p>
-                        </div>
-                      </div>
+                        ))
+                      }
 
-                      {/* Day 3 */}
-                      <div className="flex items-start space-x-4 text-left">
-                        <div className="flex flex-col items-center">
-                          <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Day 3
-                          </div>
-                          <div className="h-full border-l-2 border-gray-300"></div>
-                        </div>
-                        <div className="flex-1 rounded-xl shadow-md overflow-hidden">
-                          <h3 className="font-bold bg-[#CDE6FE] p-2">Day 3</h3>
-                          <p className="text-gray-700 p-4">
-                            Description of activities for Day 3 goes here.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Day 4 */}
-                      <div className="flex items-start space-x-4 text-left">
-                        <div className="flex flex-col items-center">
-                          <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Day 4
-                          </div>
-                          <div className="h-full border-l-2 border-gray-300"></div>
-                        </div>
-                        <div className="flex-1 rounded-xl shadow-md overflow-hidden">
-                          <h3 className="font-bold bg-[#CDE6FE] p-2">Day 4</h3>
-                          <p className="text-gray-700 p-4">
-                            Description of activities for Day 4 goes here.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Day 5 */}
-                      <div className="flex items-start space-x-4 text-left">
-                        <div className="flex flex-col items-center">
-                          <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Day 5
-                          </div>
-                        </div>
-                        <div className="flex-1 rounded-xl shadow-md overflow-hidden">
-                          <h3 className="font-bold bg-[#CDE6FE] p-2">Day 5</h3>
-                          <p className="text-gray-700 p-4">
-                            Description of activities for Day 5 goes here.
-                          </p>
-                        </div>
-                      </div>
+                     
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>}
 
               <div className="bg-[#F4F2E9] flex justify-center text-left rounded-3xl mt-8">
                 <div className="w-full max-w-4xl space-y-6">
                   {/* Inclusions and Exclusions Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {
+                    (section==="inclusion&exclusion"|| section==="") &&
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Inclusions */}
                     <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
                       <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
                         Inclusions
                       </h3>
+
+                      
+
+
                       <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Accommodation in 4-star hotels.</li>
-                        <li>Daily breakfast and dinner.</li>
-                        <li>All local transportation.</li>
-                        <li>Guided sightseeing tours.</li>
-                        <li>Complimentary welcome drinks.</li>
+                        { packageData?.inclusions.map((inclusion, index) => (
+                          <li key={index}>{inclusion}</li>
+                        ))}
                       </ul>
                     </div>
 
@@ -269,30 +258,26 @@ export default function PackagesDetailPage() {
                         Exclusion
                       </h3>
                       <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        <li>Airfare and visa charges.</li>
-                        <li>Personal expenses (e.g., laundry, tips).</li>
-                        <li>Travel insurance.</li>
-                        <li>Anything not mentioned in inclusions.</li>
-                        <li>Optional adventure activities.</li>
+                        { packageData?.exclusions.map((exclusion, index) => (
+                          <li key={index}>{exclusion}</li>
+                        ))}
                       </ul>
                     </div>
-                  </div>
+                  </div>}
 
                   {/* Terms and Conditions Section */}
-                  <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
+                  {
+                    (section==="terms&faq" || section==="") &&
+                    <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
                     <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
                       T&C
                     </h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Booking confirmation is subject to availability.</li>
-                      <li>Cancellation charges apply as per policy.</li>
-                      <li>Rates may vary based on seasonality.</li>
-                      <li>
-                        Travel insurance is mandatory for international trips.
-                      </li>
-                      <li>All disputes are subject to local jurisdiction.</li>
+                      { packageData?.terms.map((term, index) => (
+                        <li key={index}>{term}</li>
+                      ))}
                     </ul>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>
@@ -309,7 +294,7 @@ export default function PackagesDetailPage() {
               <div className="p-6 bg-[#CDE6FE] text-left font-serif font-sans">
                 <h3 className="text-2xl font-semibold">Starting From</h3>
                 <p className="text-4xl font-bold text-black">
-                  ₹31,999{" "}
+                  ₹{packageData?.price}{" "}
                   <span className="text-lg font-medium text-gray-600">
                     Per Person
                   </span>
@@ -340,13 +325,16 @@ export default function PackagesDetailPage() {
               <div className="flex flex-col items-start space-y-2 bg-[#CDE6FE] p-6 text-lg font-bold">
                 <div className="flex items-center space-x-2">
                   <i className="fa-solid fa-calendar-days"></i>
-                  <span>Duration: 5 Night & 6 Days</span>
+                  <span>Duration: { packageData?.duration }</span>
+
                 </div>
                 <div className="flex items-center space-x-2">
                   <i className="fa-solid fa-location-dot"></i>
                   <div>
                     <p className="text-left">Places to visit:</p>
-                    <p className="text-left">Whole MahaKumbh Mela Kshetra</p>
+                    <p className="text-left">
+                      {packageData?.destination}
+                    </p>
                   </div>
                 </div>
               </div>

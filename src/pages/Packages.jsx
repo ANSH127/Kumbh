@@ -1,11 +1,23 @@
-
 import PackageTop from "../assets/img/Packagetop.png";
 import Navbar from "../components/Navbar";
 import Hero3 from "../assets/img/Hero3.jpeg";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { client, builder } from "../api/SanityClient";
+import React from "react";
 export default function Packages() {
   const navigate = useNavigate();
+  const [data, setData] = React.useState([]);
+
+  const fetchPackages = async () => {
+    const data = await client.fetch(`*[_type == 'tourpackage']`);
+    console.log(data);
+    setData(data);
+  };
+  React.useEffect(() => {
+    fetchPackages();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -59,6 +71,50 @@ export default function Packages() {
       <div>
         <div className="container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 md:px-0 mt-10">
           {/* Card Template */}
+
+
+          {data.map((item) => (
+            <div
+              key={item._id}
+              className="flex flex-col relative overflow-hidden"
+            >
+              <img src={builder.image(item.image).url()} alt="" className="rounded-t-2xl w-auto h-[140px] md:h-auto " />
+              <div className="bg-orange-400 rounded-b-2xl pb-4">
+                <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
+                  <h3 className="text-xs md:text-base font-semibold">
+                    {item.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-gray-600">
+                    {item.duration}
+                  </p>
+                </div>
+
+                <div className="text-center pb-3">
+                  <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
+                    ₹{item.discountedPrice}
+                  </p>
+                  <del className="text-sm md:text-lg font-semibold text-black text-center">
+                    ₹{item.price}
+                  </del>
+                </div>
+                <div className="flex justify-evenly gap-2">
+                  <button
+                    className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                    onClick={() => navigate(`/packages/${item._id}`)}
+                  >
+                    Details →
+                  </button>
+
+                  <button
+                    className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                    onClick={() => navigate("/enquiry")}
+                  >
+                    Enquire Now →
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
 
           <div className="flex flex-col relative overflow-hidden">
             <img
