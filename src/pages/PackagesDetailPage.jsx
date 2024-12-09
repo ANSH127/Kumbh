@@ -15,9 +15,9 @@ export default function PackagesDetailPage() {
   useEffect(() => {
 
     // i want to run 1 time handle open function after 5 seconds
-    setTimeout(() => {
-      handleOpen();
-    }, 5000);
+    // setTimeout(() => {
+    //   handleOpen();
+    // }, 5000);
   }, []);
 
   return (
@@ -76,21 +76,21 @@ export default function PackagesDetailPage() {
         className="mt-[2%] text-left ml-[10%] md:ml-[6%] flex md:flex-row flex-col"
         style={{ fontFamily: "andika" }}
       >
-        <h1 className="text-[4.5vw] md:text-[3vw] font-bold">
+        <h1 className="text-[5.5vw] md:text-[3vw] font-bold">
           Non-Shahi Snan Kumbh Mela
         </h1>
         <div className="flex md:ml-2 md:mt-4">
-          <span className="text-[3vw] md:text-[2vw] font-semibold">
+          <span className="text-[4vw] md:text-[2vw] font-semibold">
             2N/3D Tour Package
-            <span className="bg-orange-400 text-lg rounded-3xl text-black h-fit px-2 ml-1 mb-1">
+            <span className="bg-orange-400  text-base md:text-lg rounded-3xl text-black h-fit px-2 ml-1 mb-1">
               Land Only
             </span>
           </span>
         </div>
       </div>
-      <div className="grid md:grid-cols-8 mt-[5%] md:mt-[3%] gap-2 relative md:pr-12 pb-8">
+      <div className="grid   md:grid-cols-8 mt-[5%] md:mt-[3%] gap-2 relative md:pr-12 pb-8">
         {/* detail section grid */}
-        <div className="grid md:col-span-5 w-full  h-screen overflow-y-auto"
+        <div className="grid md:col-span-5 w-[90%] md:w-full mx-auto  md:h-screen md:overflow-y-auto"
         
         >
           <div className="w-full  relative ">
@@ -102,20 +102,20 @@ export default function PackagesDetailPage() {
               />
             </div>
             <div className=" md:ml-[8%] mt-[3%] ">
-              <div className="flex flex-wrap justify-center md:justify-around gap-3 md:gap-2 mx-auto">
-                <button className="bg-orange-400 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 shadow-md active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+              <div className="flex flex-wrap justify-center md:justify-around gap-1 md:gap-2 mx-auto">
+                <button className="bg-orange-400 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 shadow-md active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
                   OverView
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
                   Day wise Itinerary
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
                   Residential Details
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
                   Inclusion/Exclusion
                 </button>
-                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                <button className="rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base">
                   Additional Info
                 </button>
               </div>
@@ -300,7 +300,9 @@ export default function PackagesDetailPage() {
         </div>
         {/* Price Section  grid*/}
 
-        <div className="grid md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] pr-16 ">
+        <div className="grid  md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16
+        justify-center mx-auto 
+         ">
           <div className="w-full flex flex-col gap-6">
             {/* Price Section */}
             <div className="rounded-3xl shadow-md text-center overflow-hidden">
