@@ -4,7 +4,7 @@ import PackageTop from "../assets/img/Packagetop.png";
 import Hero1 from "../assets/img/Hero1.jpeg";
 import Footer from "../components/Footer";
 import EnquiryModel from "../components/EnquiryModel";
-import { client,builder } from "../api/SanityClient";
+import { client, builder } from "../api/SanityClient";
 import { useParams } from "react-router-dom";
 
 export default function PackagesDetailPage() {
@@ -20,18 +20,11 @@ export default function PackagesDetailPage() {
   const fetchPackageData = async () => {
     const data = await client.getDocument(id);
     console.log(data);
-    
+
     setPackageData(data);
-  }
-
-
-
-
-
-
+  };
 
   useEffect(() => {
-
     fetchPackageData();
     // i want to run 1 time handle open function after 5 seconds
     // setTimeout(() => {
@@ -42,8 +35,12 @@ export default function PackagesDetailPage() {
   return (
     <div>
       <Navbar />
-      <EnquiryModel   open={open} handleClose={handleClose} handleOpen={handleOpen} />
-    
+      <EnquiryModel
+        open={open}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+      />
+
       <div className="flex justify-center items-center mt-[10%] md:mt-[8%]  w-full">
         {/* Main Container */}
         <div className="w-[90%] rounded-3xl shadow-lg overflow-hidden">
@@ -109,53 +106,80 @@ export default function PackagesDetailPage() {
       </div>
       <div className="grid   md:grid-cols-8 mt-[5%] md:mt-[3%] gap-2 relative md:pr-12 pb-8">
         {/* detail section grid */}
-        <div className="grid md:col-span-5 w-[90%] md:w-full mx-auto  md:h-screen md:overflow-y-auto"
+        <div
+          className="grid md:col-span-5 w-[90%] md:w-full mx-auto  
         
+        "
         >
           <div className="w-full  relative ">
             <div className="w-auto max-h-[80vh] h-[68vh] relative md:ml-[8%] ">
               <img
-                src={packageData?.image? builder.image(packageData?.image).url():Hero1}
+                src={
+                  packageData?.image
+                    ? builder.image(packageData?.image).url()
+                    : Hero1
+                }
                 alt="Package"
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
             <div className=" md:ml-[8%] mt-[3%] ">
               <div className="flex flex-wrap justify-center md:justify-around gap-1 md:gap-2 mx-auto">
-                <button className={`
-                  ${section==="overview"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                <button
+                  className={`
+                  ${
+                    section === "overview"
+                      ? "bg-orange-400 text-white"
+                      : "bg-gray-200 text-black"
+                  }
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
                   onClick={() => setSection("overview")}
                 >
                   OverView
                 </button>
-                <button className={`
-                  ${section==="itinerary"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                <button
+                  className={`
+                  ${
+                    section === "itinerary"
+                      ? "bg-orange-400 text-white"
+                      : "bg-gray-200 text-black"
+                  }
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
                   onClick={() => setSection("itinerary")}
-
-
                 >
                   Day wise Itinerary
                 </button>
-                <button 
-                className={`
-                  ${section==="residential"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                <button
+                  className={`
+                  ${
+                    section === "residential"
+                      ? "bg-orange-400 text-white"
+                      : "bg-gray-200 text-black"
+                  }
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
-                  
-                onClick={() => setSection("residential")}
+                  onClick={() => setSection("residential")}
                 >
                   Residential Details
                 </button>
-                <button className={`
-                  ${section==="inclusion&exclusion"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                <button
+                  className={`
+                  ${
+                    section === "inclusion&exclusion"
+                      ? "bg-orange-400 text-white"
+                      : "bg-gray-200 text-black"
+                  }
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
                   onClick={() => setSection("inclusion&exclusion")}
                 >
                   Inclusion/Exclusion
                 </button>
-                <button className={`
-                  ${section==="terms&faq"?"bg-orange-400 text-white":"bg-gray-200 text-black"}
+                <button
+                  className={`
+                  ${
+                    section === "terms&faq"
+                      ? "bg-orange-400 text-white"
+                      : "bg-gray-200 text-black"
+                  }
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
                   onClick={() => setSection("terms&faq")}
                 >
@@ -163,51 +187,50 @@ export default function PackagesDetailPage() {
                 </button>
               </div>
               {/* OverView */}
-              {
-                (section==="overview" || section==="")  &&
+              {(section === "overview" || section === "") && (
                 <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
-                <div className="flex h-fit">
-                  <div className="bg-orange-400 w-2 h-8"></div>
-                  <h3 className="text-xl font-bold text-left ml-2">
-                    Package Overview
-                  </h3>
+                  <div className="flex h-fit">
+                    <div className="bg-orange-400 w-2 h-8"></div>
+                    <h3 className="text-xl font-bold text-left ml-2">
+                      Package Overview
+                    </h3>
+                  </div>
+                  <p className="text-black text-left p-4">
+                    {packageData?.overview}
+                  </p>
                 </div>
-                <p className="text-black text-left p-4">
-                  {packageData?.overview}
-                </p>
-              </div>}
+              )}
 
               {/* Residential Details */}
-              {
-                (section==="residential" || section==="") &&
+              {(section === "residential" || section === "") && (
                 <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
-                <div className="flex h-fit">
-                  <div className="bg-orange-400 w-2 h-8"></div>
-                  <h3 className="text-xl font-bold text-left ml-2">
-                    Residential Details
-                  </h3>
+                  <div className="flex h-fit">
+                    <div className="bg-orange-400 w-2 h-8"></div>
+                    <h3 className="text-xl font-bold text-left ml-2">
+                      Residential Details
+                    </h3>
+                  </div>
+                  <div></div>
                 </div>
-                <div></div>
-              </div>}
+              )}
 
-              {
-                (section==="itinerary"|| section==="") &&
+              {(section === "itinerary" || section === "") && (
                 <div className="mt-8 bg-[#F4F2E9] shadow-xl rounded-2xl py-4">
-                <div className="flex h-fit">
-                  <div className="bg-orange-400 w-2 h-8"></div>
-                  <h3 className="text-xl font-bold text-left ml-2">
-                    Day Wise Itinerary
-                  </h3>
-                </div>
-                <div>
-                  <div className="p-6 rounded-3xl mx-auto">
-                    {/* Itinerary List */}
-                    <div className="space-y-6">
-                      
-
-                      {
-                        packageData?.itinerary.map((day, index) => (
-                          <div className="flex items-start space-x-4" key={index}>
+                  <div className="flex h-fit">
+                    <div className="bg-orange-400 w-2 h-8"></div>
+                    <h3 className="text-xl font-bold text-left ml-2">
+                      Day Wise Itinerary
+                    </h3>
+                  </div>
+                  <div>
+                    <div className="p-6 rounded-3xl mx-auto">
+                      {/* Itinerary List */}
+                      <div className="space-y-6">
+                        {packageData?.itinerary.map((day, index) => (
+                          <div
+                            className="flex items-start space-x-4"
+                            key={index}
+                          >
                             <div className="flex flex-col items-center">
                               <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
                                 Day {index + 1}
@@ -215,69 +238,64 @@ export default function PackagesDetailPage() {
                               <div className="h-full border-l-2 border-gray-300"></div>
                             </div>
                             <div className="flex-1 rounded-xl shadow-md overflow-hidden">
-                              <h3 className="font-bold bg-[#CDE6FE] p-2">Day {index + 1}</h3>
-                              <p className="text-gray-700 p-4">
-                                {day}
-                              </p>
+                              <h3 className="font-bold bg-[#CDE6FE] p-2">
+                                Day {index + 1}
+                              </h3>
+                              <p className="text-gray-700 p-4">{day}</p>
                             </div>
                           </div>
-                        ))
-                      }
-
-                     
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>}
+              )}
 
               <div className="bg-[#F4F2E9] flex justify-center text-left rounded-3xl mt-8">
                 <div className="w-full max-w-4xl space-y-6">
                   {/* Inclusions and Exclusions Row */}
-                  {
-                    (section==="inclusion&exclusion"|| section==="") &&
+                  {(section === "inclusion&exclusion" || section === "") && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Inclusions */}
-                    <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
-                      <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
-                        Inclusions
-                      </h3>
+                      {/* Inclusions */}
+                      <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
+                        <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
+                          Inclusions
+                        </h3>
 
-                      
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          {packageData?.inclusions.map((inclusion, index) => (
+                            <li key={index}>{inclusion}</li>
+                          ))}
+                        </ul>
+                      </div>
 
-
-                      <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        { packageData?.inclusions.map((inclusion, index) => (
-                          <li key={index}>{inclusion}</li>
-                        ))}
-                      </ul>
+                      {/* Exclusion */}
+                      <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
+                        <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
+                          Exclusion
+                        </h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          {packageData?.exclusions.map((exclusion, index) => (
+                            <li key={index}>{exclusion}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-
-                    {/* Exclusion */}
-                    <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
-                      <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
-                        Exclusion
-                      </h3>
-                      <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        { packageData?.exclusions.map((exclusion, index) => (
-                          <li key={index}>{exclusion}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>}
+                  )}
 
                   {/* Terms and Conditions Section */}
-                  {
-                    (section==="terms&faq" || section==="") &&
+                  {(section === "terms&faq" || section === "") && (
                     <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
-                    <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
-                      T&C
-                    </h3>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      { packageData?.terms.map((term, index) => (
-                        <li key={index}>{term}</li>
-                      ))}
-                    </ul>
-                  </div>}
+                      <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
+                        T&C
+                      </h3>
+                      <ul className="list-disc list-inside space-y-2 text-gray-700">
+                        {packageData?.terms.map((term, index) => (
+                          <li key={index}>{term}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -285,10 +303,8 @@ export default function PackagesDetailPage() {
         </div>
         {/* Price Section  grid*/}
 
-        <div className="grid  md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16
-        justify-center mx-auto 
-         ">
-          <div className="w-full flex flex-col gap-6">
+        <div className=" relative md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16   fixed">
+          <div className="w-full flex flex-col gap-6 sticky top-6">
             {/* Price Section */}
             <div className="rounded-3xl shadow-md text-center overflow-hidden">
               <div className="p-6 bg-[#CDE6FE] text-left font-serif font-sans">
@@ -319,7 +335,6 @@ export default function PackagesDetailPage() {
                 </a>
               </div>
             </div>
-
             <div className="rounded-3xl shadow-md overflow-hidden relative">
               {/* Header Section */}
               <div className="flex flex-col items-start space-y-2 bg-[#CDE6FE] p-6 text-lg font-bold">
@@ -394,6 +409,8 @@ export default function PackagesDetailPage() {
                 </p>
               </div>
             </div>
+
+
           </div>
         </div>
       </div>
