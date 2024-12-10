@@ -66,10 +66,10 @@ export default function TourPackages() {
           {data.map((item) => (
             <div
               key={item._id}
-              className="bg-none shadow-lg mx-auto cursor-pointer  min-w-[350px] h-fit "
+              className="bg-none shadow-lg mx-auto cursor-pointer  rounded-xl  min-w-[350px] h-fit "
             >
               <img
-                className="w-full h-auto shadow-none"
+                className="w-full h-auto shadow-none rounded-t-xl"
                 src={builder.image(item.image).url()}
                 alt="Prime Hotels"
               />
