@@ -41,8 +41,8 @@ export default function TourPackages() {
   }, []);
 
   return (
-    <div className="w-full h-auto bg-[#F4F2E9] flex flex-col justify-center pb-12">
-      <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
+    <div className="w-full h-auto bg-[#F4F2E9] flex flex-col justify-center mt-3 pb-8 md:pb-0">
+      <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-4">
         Prayagraj MahaKumbh Tour Packages
       </h1>
 
@@ -77,7 +77,7 @@ export default function TourPackages() {
                 <Stack direction="row" spacing={1}>
                   <Chip label="Trending" color="primary" size="small" />
                   <Chip label="Prime Hotels" color="primary" size="small" />
-                  <Rating name="read-only" value={2} readOnly />
+                  <Rating name="half-rating-read" value={4.5} precision={0.5} readOnly />
                 </Stack>
                 <h1 className="font-bold h-6 mt-1">{item.name}</h1>
                 <p className="text-sm mt-2 font-bold">

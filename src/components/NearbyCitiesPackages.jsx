@@ -1,8 +1,5 @@
 // import './NearbyCitiesPackages.css'; // Assuming you have a CSS file for styles
-import varanasiImage from "../assets/img/varanasi.png";
-import vindhyachalImage from "../assets/img/vindhyachal.png";
-import chitrakootImage from "../assets/img/chitrakoot.png";
-import ayodhyaImage from "../assets/img/ayodhya.png";
+
 import bhardwajImage from "../assets/img/Bhardwaj.png";
 import badeHanumanImage from "../assets/img/BadeHanuman.png";
 import mankameshwarImage from "../assets/img/Mankameshwar.png";
@@ -13,80 +10,133 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import Aboutintro from "./Aboutintro";
 import FoodPackages from "./FoodPackages";
 import { useNavigate } from "react-router-dom";
+import { client, builder } from "../api/SanityClient";
+import React from "react";
 
+
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import Loadar from "./Loadar";
+import HotelRating from "../assets/img/hotelrating.png";
+
+
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import Rating from "@mui/material/Rating";
 const NearbyCitiesPackages = () => {
   const navigate = useNavigate();
+  const [data, setData] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const scrollRef = React.useRef(null);
+
+  const scrollLeft = () => {
+    scrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    scrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+  };
+
+  const fetchPackages = async () => {
+    const data = await client.fetch(
+      `*[_type == 'tourpackage'  && category == 'city']`
+    );
+    // console.log(data);
+    setData(data);
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    fetchPackages();
+  }, []);
   return (
     <div className="w-full h-auto bg-[#F4F2E9] flex flex-col justify-center pb-12">
-      <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
+      <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-4 ">
         Nearby Cities Packages
       </h1>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-2 w-full px-3 md:px-12">
-        {/* Card 1 */}
-        <div className="bg-white p-2 sm:p-4 rounded-xl md:rounded-2xl lg:rounded-3xl mx-auto max-w-[90%] md:max-w-[80%] drop-shadow-2xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-          <a href="#" className="block text-center">
-            <div className="pb-2 sm:pb-6">
-              <img
-                className="w-full h-auto"
-                src={varanasiImage}
-                alt="Varanasi"
-              />
-            </div>
-            <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw]">
-              <h1>Prayagraj</h1>
-              <h1>Varanasi</h1>
-            </div>
-          </a>
-        </div>
+      {
+        loading ? <Loadar /> :
+        <div className="relative w-full px-3 md:px-12">
+        <ChevronLeftIcon
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
+          size={30}
+          onClick={scrollLeft}
+        />
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto space-x-4 scrollbar-hide"
+          style={{
+            // hide scrollbar
+            scrollbarWidth: "none",
+          }}
+        >
 
-        {/* Card 2 */}
-        <div className="bg-white p-[1vw] sm:p-4 rounded-xl md:rounded-2xl lg:rounded-3xl mx-auto max-w-[90%] md:max-w-[80%] drop-shadow-2xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-          <a href="#" className="block text-center">
-            <div className="pb-2 sm:pb-6">
+          {data.map((item) => (
+            <div
+              key={item._id}
+              className="bg-none shadow-lg mx-auto cursor-pointer  rounded-xl  min-w-[350px] h-fit "
+            >
               <img
-                className="w-full h-auto"
-                src={vindhyachalImage}
-                alt="Vindhyachal"
+                className="w-full h-auto shadow-none rounded-t-xl"
+                src={builder.image(item.image).url()}
+                alt="Prime Hotels"
               />
-            </div>
-            <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw]">
-              <h1>Prayagraj</h1>
-              <h1>Vindhyachal</h1>
-            </div>
-          </a>
-        </div>
+              <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw] px-3 my-2">
+                <Stack direction="row" spacing={1}>
+                  <Chip label="Trending" color="primary" size="small" />
+                  <Chip label="Prime Hotels" color="primary" size="small" />
+                  <Rating name="half-rating-read" value={4.5} precision={0.5} readOnly />
+                </Stack>
+                <h1 className="font-bold h-6 mt-1">{item.name}</h1>
+                <p className="text-sm mt-2 font-bold">
+                  {item.duration} | Private Cab | Guide Support
 
-        {/* Card 3 */}
-        <div className="bg-white p-2 sm:p-4 rounded-xl md:rounded-2xl lg:rounded-3xl mx-auto max-w-[90%] md:max-w-[80%] drop-shadow-2xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-          <a href="#" className="block text-center">
-            <div className="pb-2 sm:pb-6">
-              <img
-                className="w-full h-auto"
-                src={chitrakootImage}
-                alt="Chitrakoot"
-              />
-            </div>
-            <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw]">
-              <h1>Prayagraj</h1>
-              <h1>Chitrakoot</h1>
-            </div>
-          </a>
-        </div>
+                </p>
+          
 
-        {/* Card 4 */}
-        <div className="bg-white p-2 sm:p-4 rounded-xl md:rounded-2xl lg:rounded-3xl mx-auto max-w-[90%] md:max-w-[80%] drop-shadow-2xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-          <a href="#" className="block text-center">
-            <div className="pb-2 sm:pb-6">
-              <img className="w-full h-auto" src={ayodhyaImage} alt="Ayodhya" />
+                <div className="flex justify-between mt-4 pb-4 px-4">
+
+                  <div>
+                    <img src={HotelRating} alt="Hotel Rating" />
+                    </div>
+
+
+                  <div>
+                    <p className="text-2xl mt-2 font-bold">
+                      ₹{item.discountedPrice}/-
+                      </p>
+                      <del
+                        className="pl-1
+                      text-lg
+                    "
+                      >
+                        ₹{item.price}/-
+                      </del>
+                  </div>
+                </div>
+                <div className="flex justify-between  pb-2 px-4">
+                  <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm"
+                    onClick={() => navigate(`/packages/${item._id}`)}
+                  >
+                    Details→
+                  </button>
+                  <button className="bg-[#F88820] text-black rounded-lg p-2 text-sm"
+                    onClick={() => navigate("/enquiry")}
+                  >
+                    Enquire Now→
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] font-semibold leading-[4vw] md:leading-[2vw]">
-              <h1>Prayagraj</h1>
-              <h1>Ayodhya</h1>
-            </div>
-          </a>
+          ))}
         </div>
-      </div>
+        <ChevronRightIcon
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
+          size={30}
+          onClick={scrollRight}
+        />
+      </div>}
 
       <h1 className="hover-effect bg-[#F88820] rounded-lg md:rounded-xl px-4 py-2 lg:px-5 w-fit mx-auto font-bold text-[4vw] md:text-[1.5vw] mt-10 md:mt-12
       cursor-pointer transition duration-300 hover:bg-[#F88820] hover:text-white
