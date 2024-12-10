@@ -11,7 +11,7 @@ export default function Packages() {
 
   const fetchPackages = async () => {
     const data = await client.fetch(`*[_type == 'tourpackage']`);
-    console.log(data);
+    // console.log(data);
     setData(data);
   };
   React.useEffect(() => {

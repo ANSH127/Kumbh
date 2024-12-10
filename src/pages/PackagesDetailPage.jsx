@@ -22,8 +22,8 @@ export default function PackagesDetailPage() {
 
   const fetchPackageData = async () => {
     const data = await client.getDocument(id);
-    console.log(data);
-    console.log(data.faq);
+    // console.log(data);
+    // console.log(data.faq);
 
     setPackageData(data);
   };
