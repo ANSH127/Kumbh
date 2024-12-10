@@ -69,7 +69,7 @@ export default function Packages() {
         </div>
       </div>
       <div>
-        <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 md:px-0 mt-10">
+        <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-8 px-4 md:px-0 mt-10">
           {/* Card Template */}
 
 
@@ -91,24 +91,27 @@ export default function Packages() {
                   </p>
                 </div>
 
-                <div className="text-center pb-3">
-                  <p className=" text-xl md:text-3xl font-extrabold text-center h-5 text-black my-4">
+                <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
+                  <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
                     ₹{item.discountedPrice}
                   </p>
-                  <del className="text-sm md:text-lg font-semibold text-black text-center">
+                  <del className="text-xs
+                  
+
+                   md:text-lg font-semibold text-black text-center">
                     ₹{item.price}
                   </del>
                 </div>
-                <div className="flex justify-evenly gap-2">
+                <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
                   <button
-                    className="bg-white px-1 mx-2 text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                    className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                     onClick={() => navigate(`/packages/${item._id}`)}
                   >
                     Details →
                   </button>
 
                   <button
-                    className="bg-white px-1 mx-2  text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                    className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                     onClick={() => navigate("/enquiry")}
                   >
                     Enquire Now →

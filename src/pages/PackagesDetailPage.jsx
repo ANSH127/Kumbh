@@ -7,6 +7,9 @@ import EnquiryModel from "../components/EnquiryModel";
 import { client, builder } from "../api/SanityClient";
 import { useParams } from "react-router-dom";
 
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 export default function PackagesDetailPage() {
   const [open, setOpen] = React.useState(false);
   const [section, setSection] = React.useState("");
@@ -20,6 +23,7 @@ export default function PackagesDetailPage() {
   const fetchPackageData = async () => {
     const data = await client.getDocument(id);
     console.log(data);
+    console.log(data.faq);
 
     setPackageData(data);
   };
@@ -159,7 +163,7 @@ export default function PackagesDetailPage() {
                 rounded-full text-black font-semibold w-auto md:w-auto px-4 py-2 active:bg-orange-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500 text-sm md:text-base`}
                   onClick={() => setSection("residential")}
                 >
-                  Residential Details
+                  Hotel Details
                 </button>
                 <button
                   className={`
@@ -207,10 +211,70 @@ export default function PackagesDetailPage() {
                   <div className="flex h-fit">
                     <div className="bg-orange-400 w-2 h-8"></div>
                     <h3 className="text-xl font-bold text-left ml-2">
-                      Residential Details
+                      Hotel Details
                     </h3>
                   </div>
-                  <div></div>
+                  <div>
+                    <div className="p-6 rounded-3xl mx-auto">
+                      {/* Hotel List */}
+                      {packageData?.hotels?.map((hotel, index) => (
+                        <>
+                          <div
+                            key={index}
+                            className="flex flex-col md:flex-row mb-8"
+                          >
+                            {/* Hotel Images Carousel */}
+                            <div className="w-full md:w-1/2">
+                              <Carousel
+                                showThumbs={false}
+                                showStatus={false}
+                                infiniteLoop={true}
+                                autoPlay={true}
+                                interval={3000}
+                              >
+                                {hotel?.hotelImages?.map((image, imgIndex) => (
+                                  <div key={imgIndex}>
+                                    <img
+                                      src={builder.image(image).url()}
+                                      alt={`Hotel Image ${imgIndex + 1}`}
+                                      className="w-full h-64 object-cover rounded-lg mb-4"
+                                    />
+                                  </div>
+                                ))}
+                              </Carousel>
+                            </div>
+                            {/* Hotel Details */}
+                            <div className="w-full md:w-1/2 md:pl-6">
+                              <h4 className="text-lg font-bold mb-2">
+                                {hotel.hotelName}
+                              </h4>
+                              <p className="mb-2">
+                                <strong>Rooms</strong>
+                              </p>
+                              <p className="mb-2">{hotel.roomsDescription}</p>
+                              <p className="mb-2">
+                                <strong>Amenities</strong>
+                              </p>
+                              <p className="mb-2">
+                                {hotel.amenitiesDescription}
+                              </p>
+                              <p className="mb-2">
+                                <strong>Dining</strong>
+                              </p>
+                              <p className="mb-2">{hotel.diningDescription}</p>
+                              <p className="mb-2">
+                                <strong>On Door Cab Service:</strong>
+                              </p>
+                              <p className="mb-2">{hotel.onDoorCabService}</p>
+                            </div>
+                          </div>
+                          {index < packageData.hotels.length - 1 && (
+                            <div className="w-full border-t-4 border-dotted border-black my-4"></div>
+                          )}
+                        </>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -285,16 +349,41 @@ export default function PackagesDetailPage() {
 
                   {/* Terms and Conditions Section */}
                   {(section === "terms&faq" || section === "") && (
-                    <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
-                      <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
-                        T&C
-                      </h3>
-                      <ul className="list-disc list-inside space-y-2 text-gray-700">
-                        {packageData?.terms.map((term, index) => (
-                          <li key={index}>{term}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    <>
+                      <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
+                        <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
+                          T&C
+                        </h3>
+                        <ul className="list-disc list-inside space-y-2 text-gray-700">
+                          {packageData?.terms.map((term, index) => (
+                            <li key={index}>{term}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* // FAQ Section */}
+                      {packageData?.faq?.length > 0 && (
+                        <div className="bg-[#F4F2E9] shadow-md rounded-lg p-6">
+                          <h3 className="font-bold text-lg border-l-4 border-orange-500 pl-2 mb-4">
+                            FAQs
+                          </h3>
+                          <ul className=" list-inside space-y-2 text-gray-700">
+                            {packageData?.faq.map((faq, index) => (
+                              <li key={index} className="my-2">
+                                <span className="font-bold text-xl">
+                                  Ques: {faq.question}
+                                </span>
+                                <br />
+                                <span className="font-bold text-xl">
+                                  Ans:
+                                </span>{" "}
+                                {faq.answer}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -340,16 +429,13 @@ export default function PackagesDetailPage() {
               <div className="flex flex-col items-start space-y-2 bg-[#CDE6FE] p-6 text-lg font-bold">
                 <div className="flex items-center space-x-2">
                   <i className="fa-solid fa-calendar-days"></i>
-                  <span>Duration: { packageData?.duration }</span>
-
+                  <span>Duration: {packageData?.duration}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <i className="fa-solid fa-location-dot"></i>
                   <div>
                     <p className="text-left">Places to visit:</p>
-                    <p className="text-left">
-                      {packageData?.destination}
-                    </p>
+                    <p className="text-left">{packageData?.destination}</p>
                   </div>
                 </div>
               </div>
@@ -409,8 +495,6 @@ export default function PackagesDetailPage() {
                 </p>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
