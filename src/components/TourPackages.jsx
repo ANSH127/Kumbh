@@ -10,7 +10,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 import { client, builder } from "../api/SanityClient";
 import React from "react";
-import HotelRating from "../assets/img/hotelRating.png";
+import HotelRating from "../assets/img/hotelrating.png";
 import Loadar from "./Loadar";
 
 export default function TourPackages() {
