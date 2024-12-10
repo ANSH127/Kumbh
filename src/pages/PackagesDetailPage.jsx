@@ -392,38 +392,47 @@ export default function PackagesDetailPage() {
         </div>
         {/* Price Section  grid*/}
 
-        <div className=" relative md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16   fixed">
-          <div className="w-full flex flex-col gap-6 sticky top-6">
-            {/* Price Section */}
-            <div className="rounded-3xl shadow-md text-center overflow-hidden">
-              <div className="p-6 bg-[#CDE6FE] text-left font-serif font-sans">
-                <h3 className="text-2xl font-semibold">Starting From</h3>
-                <p className="text-4xl font-bold text-black">
+        {/* Price Section grid */}
+        <div className="relative md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16">
+          <div className="w-full flex flex-col gap-6 md:sticky md:top-6  ">
+            {/* Price box */}
+            <div className="rounded-xl md:rounded-3xl shadow-md text-center overflow-hidden fixed bottom-5 left-0 right-0 z-10 bg-white md:static md:top-6 md:bottom-0 md:left-0 md:right-0 md:z-0">
+              <div className="p-4 md:p-6
+              bg-[#F88820] 
+               md:bg-[#CDE6FE] text-left font-serif font-sans">
+                <h3 className="text-xl md:text-2xl font-semibold">
+                  Starting From
+                </h3>
+                <p className="text-2xl md:text-4xl font-bold text-black">
                   ₹{packageData?.price}{" "}
-                  <span className="text-lg font-medium text-gray-600">
+                  <span className="text-base md:text-lg font-medium text-gray-600">
                     Per Person
                   </span>
                 </p>
-                <p className="text-sm text-gray-500 mt-2">
+                <p className="text-xs md:text-sm text-gray-500 mt-2">
                   No Cost EMI starts from ₹1999{" "}
                   <a href="#" className="text-blue-600 underline">
                     see option
                   </a>
                 </p>
               </div>
-              <div className="pt-4 space-y-2 bg-[#F4F2E9] px-[20%] py-4">
-                <a href="https://rzp.io/rzp/h3D5eXxJ">
-                  <button className="bg-[#F88820] text-white font-semibold w-full py-3 rounded-2xl my-2 shadow hover:text-black active:text-white focus:outline-none hover:ring hover:ring-blue-500">
-                    BOOK NOW
-                  </button>
-                </a>
-                <a href="Enquiry.html">
-                  <button className="bg-gray-300 text-gray-700 font-semibold w-full py-3 rounded-2xl shadow hover:bg-gray-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
-                    CUSTOMIZE
-                  </button>
-                </a>
+              <div className="pt-4 space-y-2 bg-[#F4F2E9] px-4 md:px-[20%] py-4">
+                <div className="flex flex-row md:flex-col gap-2">
+                  <a href="https://rzp.io/rzp/h3D5eXxJ" className="w-full">
+                    <button className="bg-[#F88820] text-white font-semibold w-full py-2 md:py-3 rounded-2xl shadow hover:text-black active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                      BOOK NOW
+                    </button>
+                  </a>
+                  <a href="Enquiry.html" className="w-full">
+                    <button className="bg-gray-300 text-gray-700 font-semibold w-full py-2 md:py-3 rounded-2xl shadow hover:bg-gray-400 active:text-white focus:outline-none hover:ring hover:ring-blue-500">
+                      CUSTOMIZE
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
+
+            {/* duration box */}
             <div className="rounded-3xl shadow-md overflow-hidden relative">
               {/* Header Section */}
               <div className="flex flex-col items-start space-y-2 bg-[#CDE6FE] p-6 text-lg font-bold">
@@ -468,7 +477,7 @@ export default function PackagesDetailPage() {
               </div>
             </div>
 
-            {/* Contact Section */}
+            {/* Contact box */}
             <div className="bg-[#CDE6FE] py-4 rounded-3xl grid grid-cols-6 px-[10%]">
               <div className="grid col-span-2 w-fit my-auto">
                 <i className="fa-solid fa-headset fa-5x"></i>
