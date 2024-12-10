@@ -292,14 +292,14 @@ export default function PackagesDetailPage() {
                       <div className="space-y-6">
                         {packageData?.itinerary.map((day, index) => (
                           <div
-                            className="flex items-start space-x-4"
+                            className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4"
                             key={index}
                           >
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center mx-auto">
                               <div className="bg-[#F49330] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold">
                                 Day {index + 1}
                               </div>
-                              <div className="h-full border-l-2 border-gray-300"></div>
+                              <div className="h-full border-l-2 border-gray-300 hidden md:block"></div>
                             </div>
                             <div className="flex-1 rounded-xl shadow-md overflow-hidden">
                               <h3 className="font-bold bg-[#CDE6FE] p-2">
@@ -397,9 +397,11 @@ export default function PackagesDetailPage() {
           <div className="w-full flex flex-col gap-6 md:sticky md:top-6  ">
             {/* Price box */}
             <div className="rounded-xl md:rounded-3xl shadow-md text-center overflow-hidden fixed bottom-5 left-0 right-0 z-10 bg-white md:static md:top-6 md:bottom-0 md:left-0 md:right-0 md:z-0">
-              <div className="p-4 md:p-6
+              <div
+                className="p-4 md:p-6
               bg-[#F88820] 
-               md:bg-[#CDE6FE] text-left font-serif font-sans">
+               md:bg-[#CDE6FE] text-left font-serif font-sans"
+              >
                 <h3 className="text-xl md:text-2xl font-semibold">
                   Starting From
                 </h3>
