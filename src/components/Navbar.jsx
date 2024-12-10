@@ -1,6 +1,7 @@
 import  { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+
 const Navbar = () => {
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const location = useLocation();
