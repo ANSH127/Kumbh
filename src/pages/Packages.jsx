@@ -30,6 +30,7 @@ export default function Packages() {
   };
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     fetchPackages();
     fetchPackages2();
   }, []);

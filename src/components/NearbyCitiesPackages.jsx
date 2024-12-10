@@ -88,7 +88,9 @@ const NearbyCitiesPackages = () => {
         </div>
       </div>
 
-      <h1 className="hover-effect bg-[#F88820] rounded-lg md:rounded-xl px-4 py-2 lg:px-5 w-fit mx-auto font-bold text-[4vw] md:text-[1.5vw] mt-10 md:mt-12"
+      <h1 className="hover-effect bg-[#F88820] rounded-lg md:rounded-xl px-4 py-2 lg:px-5 w-fit mx-auto font-bold text-[4vw] md:text-[1.5vw] mt-10 md:mt-12
+      cursor-pointer transition duration-300 hover:bg-[#F88820] hover:text-white
+      "
       onClick={() => navigate("/enquiry")}
       >
         Customize

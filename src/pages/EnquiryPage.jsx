@@ -1,7 +1,7 @@
 
 import Navbar from "../components/Navbar";
 import A1 from "../assets/img/Hero3.jpeg";
-import { useState } from "react";
+import React, { useState } from "react";
 import Footer from "../components/Footer";
 import { enquiryCollection } from "../api/firebase";
 import { addDoc } from "firebase/firestore";
@@ -60,6 +60,12 @@ export default function EnquiryPage() {
   const handleOkayClick = () => {
     setShowModal(false);
   };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
   return (
     <div>
       <Navbar />

@@ -32,6 +32,9 @@ export default function PackagesDetailPage() {
   };
 
   useEffect(() => {
+
+    window.scrollTo(0, 0);
+
     fetchPackageData();
     // i want to run 1 time handle open function after 5 seconds
     // setTimeout(() => {

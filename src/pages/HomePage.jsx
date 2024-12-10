@@ -18,11 +18,11 @@ export default function HomePage() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      handleOpen();
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     handleOpen();
+  //   }, 5000);
+  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
