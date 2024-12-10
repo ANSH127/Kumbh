@@ -6,7 +6,7 @@ export const client = createClient({
     projectId: "vnmkbnfo",
     dataset: "production",
     apiVersion: "2021-10-21",
-    useCdn: false,
+    useCdn: true,
 });
 
 export const builder = ImageUrlBuilder(client);
