@@ -1,41 +1,39 @@
 import React from "react";
-import Logo from '../assets/img/logo.png';
+import Logo from "../assets/img/logo.png";
+import { client, builder } from "../api/SanityClient";
+import { useParams } from "react-router-dom";
+import PortableText from "react-portable-text";
+import { useNavigate } from "react-router-dom";
 
 const BlogDetailPage = () => {
-  const cards = [
-    {
-      title:
-        "Prayagraj Mahakumbh: A Divine Confluence of Faith, Culture, and Spirituality",
-      imgSrc: "https://images.unsplash.com/photo-1707653056939-5bf9eae73228?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with the real image URL
-      link: "#",
-    },
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [data, setData] = React.useState(null);
+  const [latestBlogs, setLatestBlogs] = React.useState(null);
 
-    {
-        title:
-          "Prayagraj Mahakumbh: A Divine Confluence of Faith, Culture, and Spirituality",
-        imgSrc: "https://images.unsplash.com/photo-1707653056939-5bf9eae73228?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with the real image URL
-        link: "#",
-      },
+  const fetchBlogData = async () => {
+    const data = await client.getDocument(id);
+    // console.log(data);
+    setData(data);
+  };
 
-      {
-        title:
-          "Prayagraj Mahakumbh: A Divine Confluence of Faith, Culture, and Spirituality",
-        imgSrc: "https://images.unsplash.com/photo-1707653056939-5bf9eae73228?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with the real image URL
-        link: "#",
-      },
+  // fetch 5 lastes blog posts
 
-      {
-        title:
-          "Prayagraj Mahakumbh: A Divine Confluence of Faith, Culture, and Spirituality",
-        imgSrc: "https://images.unsplash.com/photo-1707653056939-5bf9eae73228?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with the real image URL
-        link: "#",
-      }
-    // Add more card data here if needed
-  ];
+  const fetchLatestBlogs = async () => {
+    const data = await client.fetch(
+      `*[_type == "blog"] | order(_createdAt desc) [0...4]`
+    );
+    setLatestBlogs(data);
+    // console.log(data);
+  };
 
-  return (<>
-  
+  React.useEffect(() => {
+    fetchBlogData();
+    fetchLatestBlogs();
+  }, []);
 
+  return (
+    <>
       {/* Header Section */}
       <div className="bg-[#F4F2E9] py-3 md:py-5 md:mt-[5vw]">
         <div className="flex items-center justify-center text-sm font-bold text-gray-800">
@@ -44,7 +42,7 @@ const BlogDetailPage = () => {
 
           <div
             className="flex items-center text-[5.5vw] md:text-[3vw]"
-            style={{ fontFamily: 'Fraunces, serif' }}
+            style={{ fontFamily: "Fraunces, serif" }}
           >
             <h1 className="font-bold tracking-[0.25em] leading-none">MAHAK</h1>
             <img
@@ -52,7 +50,9 @@ const BlogDetailPage = () => {
               alt="Logo"
               className="w-[6.5vw] md:w-[3vw] h-[6.5vw] md:h-[3vw] inline-block relative -top-[0.2vw] ml-[-0.5vw] mr-[0.1vw]"
             />
-            <h1 className="font-bold tracking-[0.25em] leading-none">MBH BLOG</h1>
+            <h1 className="font-bold tracking-[0.25em] leading-none">
+              MBH BLOG
+            </h1>
           </div>
 
           <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 ml-6"></div>
@@ -62,7 +62,7 @@ const BlogDetailPage = () => {
         <div className="h-[2px] md:h-[3px] bg-black md:mb-4"></div>
         <div
           className="text-xl text-center font-bold tracking-wider md:mb-4"
-          style={{ fontFamily: 'Fraunces, serif' }}
+          style={{ fontFamily: "Fraunces, serif" }}
         >
           PRAYAGRAJ MAHAKUMBH
         </div>
@@ -72,11 +72,11 @@ const BlogDetailPage = () => {
       {/* Subtitle Section */}
       <div
         className="bg-black text-xl mx-10 text-white py-3 text-center uppercase tracking-widest hidden md:block"
-        style={{ fontFamily: 'Fraunces, serif' }}
+        style={{ fontFamily: "Fraunces, serif" }}
       >
         <p>
-          "Discover the unparalleled spiritual journey and rich traditions of Prayagraj's Mahakumbh
-          2025"
+          "Discover the unparalleled spiritual journey and rich traditions of
+          Prayagraj's Mahakumbh 2025"
         </p>
       </div>
 
@@ -84,82 +84,89 @@ const BlogDetailPage = () => {
       <div className="container mx-auto md:mt-8 bg-[#F4F2E9] px-6 md:p-6 shadow-lg">
         <h1
           className="text-[5.1vw] md:text-3xl font-bold text-gray-800 uppercase text-left mb-4"
-          style={{ fontFamily: 'Fraunces, serif' }}
+          style={{ fontFamily: "Fraunces, serif" }}
         >
-          Prayagraj Mahakumbh: A Divine Confluence of Faith, Culture, and Spirituality
+          {data && data.title}
         </h1>
 
         <hr className="border-t-2 border-black md:border-gray-300 mb-6" />
 
-        <div className="md:flex md:gap-6">
-          <div className="md:w-2/3 text-gray-700 text-left">
-            <p className="mb-4">
-              The Prayagraj Mahakumbh is one of the largest spiritual gatherings in the world,
-              attracting millions of devotees, sadhus, and tourists to the holy city of Prayagraj,
-              India. This event takes place every twelve years at the sacred Sangam–the confluence
-              of the rivers Ganga, Yamuna, and the mystical Saraswati. According to Hindu beliefs,
-              taking a dip at the Sangam during the Kumbh Mela period washes away sins, bringing
-              spiritual purity and a closer connection to the divine.
-            </p>
-            <p>
-              The Mahakumbh offers a mesmerizing spectacle with colorful processions of sadhus from
-              various Hindu sects, each displaying their unique traditions and practices. The
-              atmosphere is filled with spiritual energy, as religious discourses, devotional songs,
-              and cultural performances take place throughout the day.
-            </p>
-          </div>
-          <div className="md:w-1/3 mt-6 md:mt-0 flex items-center justify-center">
-            <img
-              src="https://images.unsplash.com/photo-1665413793087-d58c23e3a177?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="image of blog1"
-              className="rounded-md shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
-    
-  
-  <div className="  py-8">
-    <div className="flex justify-center items-center">
-      <div className="container mx-auto px-4 lg:px-12">
-        <div className="grid grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-14">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="bg-[#F4F2E9] rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105"
-            >
-              <img
-                src={card.imgSrc}
-                alt={card.title}
-                className="w-full h-48 object-cover"
+        {data && data.content && (
+          <div className="md:flex">
+            <div className=" text-gray-700 text-left">
+              <PortableText
+                content={data && data.content}
+                projectId="vnmkbnfo"
+                dataset="production"
+                className="text-gray-700 text-base font-sans"
+                serializers={{
+                  h1: (props) => <h1 style={{ color: "red" }} {...props} />,
+                  li: ({ children }) => (
+                    <li className="special-list-item">{children}</li>
+                  ),
+                  h2: (props) => (
+                    <h2
+                      className="text-2xl font-bold text-gray-800"
+                      {...props}
+                    />
+                  ),
+                  normal: (props) => (
+                    <p className="text-gray-700 text-justify" {...props} />
+                  ),
+                  link: (props) => (
+                    <a
+                      className="text-blue-500 hover:underline"
+                      href={props.href}
+                    >
+                      {props.children}
+                    </a>
+                  ),
+                }}
               />
-              <div className="p-2 text-center mb-4">
-                <h2 className="text-lg font-regular lg:font-medium text-gray-800">
-                  {card.title}... 
-
-                  <a
-                  href={card.link}
-                  className="text-blue-500 hover:underline"
-                >
-                  read more
-                </a>
-                </h2>
-                
-              </div>
             </div>
-          ))}
+          </div>
+        )}
+      </div>
+
+      <div className="py-8">
+        <div className="flex justify-center items-center">
+          <div className="container mx-auto px-4 lg:px-12">
+            <div className="grid grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-14">
+              {latestBlogs?.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-[#F4F2E9] rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105"
+                >
+                  <img
+                    src={builder.image(card.image).url()}
+                    alt={card.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-2 text-center mb-4">
+                    <h2 className="text-lg font-regular lg:font-medium text-gray-800">
+                      {card.title}...
+                      <p
+                        onClick={() => navigate(`/blog/${card._id}`)}
+                        className="text-blue-500 hover:underline cursor-pointer"
+                      >
+                        read more
+                      </p>
+                    </h2>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className=" justify-center text-center  font-semibold  p-2 rounded-lg mt-10 ">
+          <p
+            className=" hover:underline cursor-pointer  text-gray-800 text-lg font-semibold p-2 rounded-lg"
+            onClick={() => navigate("/blogs")}
+          >
+            Read Latest Blogs &rarr;
+          </p>
         </div>
       </div>
-    </div>
-
-    <div className="bg-[#F99941] text-center font-semibold w-fit p-2 rounded-lg mt-10 place-self-end mr-16">
-                <a href="#" className=" hover:underline">
-                  Read Latest Blogs &rarr;
-                </a>
-    </div>
-
-   
-    </div>
     </>
   );
 };
