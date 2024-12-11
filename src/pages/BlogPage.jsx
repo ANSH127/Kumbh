@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { client, builder } from "../api/SanityClient";
 import React from "react";
 import Loadar from "../components/Loadar";
+import Footer from "../components/Footer";
 
 function BlogPage() {
   const [data, setData] = React.useState([]);
@@ -114,6 +115,7 @@ function BlogPage() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }

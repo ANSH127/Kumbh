@@ -4,6 +4,8 @@ import { client, builder } from "../api/SanityClient";
 import { useParams } from "react-router-dom";
 import PortableText from "react-portable-text";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const BlogDetailPage = () => {
   const { id } = useParams();
@@ -34,6 +36,7 @@ const BlogDetailPage = () => {
 
   return (
     <>
+    <Navbar />
       {/* Header Section */}
       <div className="bg-[#F4F2E9] py-3 md:py-5 md:mt-[5vw]">
         <div className="flex items-center justify-center text-sm font-bold text-gray-800">
@@ -167,6 +170,7 @@ const BlogDetailPage = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
