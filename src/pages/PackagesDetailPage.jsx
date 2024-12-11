@@ -37,9 +37,9 @@ export default function PackagesDetailPage() {
 
     fetchPackageData();
     // i want to run 1 time handle open function after 5 seconds
-    // setTimeout(() => {
-    //   handleOpen();
-    // }, 5000);
+    setTimeout(() => {
+      handleOpen();
+    }, 5000);
   }, []);
 
   return (

@@ -18,19 +18,19 @@ export default function HomePage() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     handleOpen();
-  //   }, 5000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      handleOpen();
+    }, 5000);
+  }, []);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 8000); // Change image every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 8000); // Change image every 3 seconds
 
-  //   return () => clearInterval(interval); // Cleanup interval on component unmount
-  // }, [images.length]);
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [images.length]);
 
   return (
     <div>
@@ -41,8 +41,12 @@ export default function HomePage() {
       />
       <Navbar />
       <div className="w-full h-[90vh] relative">
-        <div className="absolute top-1/3 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col">
-          <h2 className="text-xl md:text-5xl font-bold tracking-[0.25em] leading-none">
+        <div
+          className="absolute top-1/3 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col
+        w-full md:w-[60%]
+        "
+        >
+          <h2 className="text-2xl md:text-5xl font-bold tracking-[0.25em] leading-none">
             MAHAK
             <img
               src={Logo}
@@ -52,11 +56,9 @@ export default function HomePage() {
             MBH 2025
           </h2>
 
-          <h3 className="text-sm md:text-3xl   leading-none text-black">
-          Experience the Spirituality of Life Time
-          with <b>
-            prayagrajkumbhmela.com
-            </b>
+          <h3 className="text-base md:text-3xl   leading-none text-black">
+            Experience the Spirituality of Life Time with{" "}
+            <b>prayagrajkumbhmela.com</b>
           </h3>
         </div>
         <img
