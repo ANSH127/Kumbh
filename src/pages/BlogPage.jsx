@@ -85,8 +85,8 @@ function BlogPage() {
         {loading ? (
           <Loadar />
         ) : (
-          <div className="w-[90%] mx-auto py-4 px-4 md:px-4 bg-[#F4F2E9]">
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 grid- flex-wrap">
+          <div className="w-[90%] mx-auto py-8 px-4 md:px-4 bg-[#F4F2E9]">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10 grid- flex-wrap">
               {data.map((post, index) => (
                 <div
                   key={index}
