@@ -6,17 +6,23 @@ import { useNavigate } from "react-router-dom";
 import { client, builder } from "../api/SanityClient";
 import React from "react";
 import Loadar from "../components/Loadar";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+
 export default function Packages() {
   const navigate = useNavigate();
   const [data, setData] = React.useState([]);
   const [data2, setData2] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [userType, setUserType] = React.useState("Indian");
+  const [filteredPackages, setFilteredPackages] = React.useState([]);
+  const [filteredPackages2, setFilteredPackages2] = React.useState([]);
 
   const fetchPackages = async () => {
     const data = await client.fetch(
       `*[_type == 'tourpackage'  && category == 'mela']`
     );
-    console.log(data);
+    // console.log(data);
     setData(data);
   };
 
@@ -24,9 +30,23 @@ export default function Packages() {
     const data = await client.fetch(
       `*[_type == 'tourpackage'  && category == 'city']`
     );
-    console.log(data);
+    // console.log(data);
     setData2(data);
     setLoading(false);
+  };
+
+  const filterPackages = () => {
+    if (userType === "Indian") {
+      setFilteredPackages(data.filter((pkg) => pkg.packageType === "indian"));
+      setFilteredPackages2(data2.filter((pkg) => pkg.packageType === "indian"));
+    } else {
+      setFilteredPackages(
+        data.filter((pkg) => pkg.packageType === "international")
+      );
+      setFilteredPackages2(
+        data2.filter((pkg) => pkg.packageType === "international")
+      );
+    }
   };
 
   React.useEffect(() => {
@@ -34,6 +54,10 @@ export default function Packages() {
     fetchPackages();
     fetchPackages2();
   }, []);
+
+  React.useEffect(() => {
+    filterPackages();
+  }, [userType, data2]);
 
   return (
     <>
@@ -85,129 +109,141 @@ export default function Packages() {
           </div>
         </div>
       </div>
-      {
-        loading? <Loadar/>:
+
+      <div className="flex justify-center mt-4">
+        <FormControlLabel
+          onChange={(e) =>
+            setUserType(e.target.checked ? "Indian" : "Foreigner")
+          }
+          control={<Switch defaultChecked color="warning" />}
+          label="Indian"
+        />
+      </div>
+      {loading ? (
+        <Loadar />
+      ) : (
         <div>
-        <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-8 px-4 md:px-0 mt-10">
-          {/* Card Template */}
+          <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-8 px-4 md:px-0 mt-10">
+            {/* Card Template */}
 
-          {data.map((item) => (
-            <div
-              key={item._id}
-              className="flex flex-col relative overflow-hidden"
-            >
-              <img
-                src={builder.image(item.image).url()}
-                alt=""
-                className="rounded-t-2xl w-auto h-[140px] 
+            {filteredPackages?.map((item) => (
+              <div
+                key={item._id}
+                className="flex flex-col relative overflow-hidden"
+              >
+                <img
+                  src={builder.image(item.image).url()}
+                  alt=""
+                  className="rounded-t-2xl w-auto h-[140px] 
               md:h-[200px] object-cover object-center shadow-lg transition duration-300 hover:scale-105
                "
-              />
-              <div className="bg-orange-400 rounded-b-2xl pb-4">
-                <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                  <h3 className="text-xs md:text-base font-semibold">
-                    {item.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-600">
-                    {item.duration}
-                  </p>
-                </div>
+                />
+                <div className="bg-orange-400 rounded-b-2xl pb-4">
+                  <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
+                    <h3 className="text-xs md:text-base font-semibold">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs md:text-sm text-gray-600">
+                      {item.duration}
+                    </p>
+                  </div>
 
-                <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
-                  <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
-                    ₹{item.discountedPrice}
-                  </p>
-                  <del
-                    className="text-xs
+                  <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
+                    <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
+                      ₹{item.discountedPrice}
+                    </p>
+                    <del
+                      className="text-xs
                   
 
                    md:text-lg font-semibold text-black text-center"
-                  >
-                    ₹{item.price}
-                  </del>
-                </div>
-                <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
-                  <button
-                    className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-                    onClick={() => navigate(`/packages/${item._id}`)}
-                  >
-                    Details →
-                  </button>
+                    >
+                      ₹{item.price}
+                    </del>
+                  </div>
+                  <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
+                    <button
+                      className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                      onClick={() => navigate(`/packages/${item._id}`)}
+                    >
+                      Details →
+                    </button>
 
-                  <button
-                    className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-                    onClick={() => navigate("/enquiry")}
-                  >
-                    Enquire Now →
-                  </button>
+                    <button
+                      className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                      onClick={() => navigate("/enquiry")}
+                    >
+                      Enquire Now →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className=" w-11/12   rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14">
-          <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
-            Nearby Cities Packages
-          </h1>
+            ))}
+          </div>
+          <div className=" w-11/12   rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14">
+            <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
+              Nearby Cities Packages
+            </h1>
 
-          {/* Card Template */}
-        </div>
-        <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-8 px-4 md:px-0 mt-10 mb-8">
-          {data2.map((item) => (
-            <div
-              key={item._id}
-              className="flex flex-col relative overflow-hidden"
-            >
-              <img
-                src={builder.image(item.image).url()}
-                alt=""
-                className="rounded-t-2xl w-auto h-[140px] 
+            {/* Card Template */}
+          </div>
+          <div className="w-full md:w-[90%] container mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-8 px-4 md:px-0 mt-10 mb-8">
+            {filteredPackages2.map((item) => (
+              <div
+                key={item._id}
+                className="flex flex-col relative overflow-hidden"
+              >
+                <img
+                  src={builder.image(item.image).url()}
+                  alt=""
+                  className="rounded-t-2xl w-auto h-[140px] 
               md:h-[200px] object-cover object-center shadow-lg transition duration-300 hover:scale-105
                "
-              />
-              <div className="bg-orange-400 rounded-b-2xl pb-4">
-                <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
-                  <h3 className="text-xs md:text-base font-semibold">
-                    {item.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-600">
-                    {item.duration}
-                  </p>
-                </div>
+                />
+                <div className="bg-orange-400 rounded-b-2xl pb-4">
+                  <div className="bg-[#F4F2E9] p-1 text-center -mt-8 mx-4 rounded-2xl shadow-lg z-10 relative font-serif">
+                    <h3 className="text-xs md:text-base font-semibold">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs md:text-sm text-gray-600">
+                      {item.duration}
+                    </p>
+                  </div>
 
-                <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
-                  <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
-                    ₹{item.discountedPrice}
-                  </p>
-                  <del
-                    className="text-xs
+                  <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
+                    <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
+                      ₹{item.discountedPrice}
+                    </p>
+                    <del
+                      className="text-xs
                   
 
                    md:text-lg font-semibold text-black text-center"
-                  >
-                    ₹{item.price}
-                  </del>
-                </div>
-                <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
-                  <button
-                    className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-                    onClick={() => navigate(`/packages/${item._id}`)}
-                  >
-                    Details →
-                  </button>
+                    >
+                      ₹{item.price}
+                    </del>
+                  </div>
+                  <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
+                    <button
+                      className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                      onClick={() => navigate(`/packages/${item._id}`)}
+                    >
+                      Details →
+                    </button>
 
-                  <button
-                    className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
-                    onClick={() => navigate("/enquiry")}
-                  >
-                    Enquire Now →
-                  </button>
+                    <button
+                      className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                      onClick={() => navigate("/enquiry")}
+                    >
+                      Enquire Now →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>}
+      )}
       <Footer />
     </>
   );
