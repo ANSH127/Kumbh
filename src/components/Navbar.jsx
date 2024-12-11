@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 hidden md:flex justify-between bg-black bg-opacity-10 rounded-b-lg w-[70%] lg:w-[50%] px-5 py-3 items-center font-medium text-[1.5vw] lg:text-[14px] text-black z-10 mb-[10%]">
         <Link to="/" className={getLinkClass('/')}>Home</Link>
         <Link to="/blogs" className={getLinkClass('/blogs')}>Blogs</Link>
-        <Link to="/gallery" className={getLinkClass('/gallery')}>Picture Gallery</Link>
+        <Link to="/updates" className={getLinkClass('/updates')}>Mela Updates</Link>
         <Link to="/packages" className={getLinkClass('/packages')}>Packages</Link>
         <Link to="/enquiry" className={getLinkClass('/enquiry')}>Enquire Now</Link>
       </div>
