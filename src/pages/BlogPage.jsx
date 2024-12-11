@@ -6,69 +6,6 @@ import React from "react";
 import Loadar from "../components/Loadar";
 
 function BlogPage() {
-  const blogData = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1719126222362-ab9f80d4c579?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-    {
-      imageSrc:
-        "https://plus.unsplash.com/premium_photo-1697730409550-71858318f4c8?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1726303448966-0b692ebd8334?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1712992770394-0ae1523b0d37?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1543138009-099c5d3b74ab?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1701361753960-eac429eeabde?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1728769594106-d5d45d4534b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1724431636789-a68b78fb148a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGdhbmdhfGVufDB8fDB8fHww",
-      title: "Blog Post Title 1",
-      description:
-        "This is a short description of the blog post. It can be truncated if it's too long.",
-    },
-    // ... more blog data
-  ];
-
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -145,36 +82,37 @@ function BlogPage() {
           </div>
         </div>
 
-        {
-          loading ? <Loadar /> :
-
+        {loading ? (
+          <Loadar />
+        ) : (
           <div className="w-[90%] mx-auto py-4 px-4 md:px-4 bg-[#F4F2E9]">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 grid- flex-wrap">
-            {data.map((post, index) => (
-              <div
-                key={index}
-                className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 "
-              >
-                <img
-                  src={builder.image(post.image).url()}
-                  alt={post.title}
-                  className="w-full h-48 md:h-64 object-cover"
-                />
-                <div className="p-4 ">
-                  <p className="text-xs md:text-base text-justify ">
-                    {post.description.substring(0, 150)}...
-                    <Link
-                      to={`/blog/${post._id}`}
-                      className="text-blue-500 hover:underline"
-                    >
-                      Read more
-                    </Link>
-                  </p>
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 grid- flex-wrap">
+              {data.map((post, index) => (
+                <div
+                  key={index}
+                  className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 "
+                >
+                  <img
+                    src={builder.image(post.image).url()}
+                    alt={post.title}
+                    className="w-full h-48 md:h-64 object-cover"
+                  />
+                  <div className="p-4 ">
+                    <p className="text-xs md:text-base text-justify ">
+                      {post.description.substring(0, 150)}...
+                      <Link
+                        to={`/blog/${post._id}`}
+                        className="text-blue-500 hover:underline"
+                      >
+                        Read more
+                      </Link>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     </>
   );
