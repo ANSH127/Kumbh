@@ -82,7 +82,7 @@ const UpdatesPage = () => {
         {loading ? (
           <Loadar />
         ) : (
-          <div className="flex flex-wrap justify-start  gap-4 p-4">
+          <div className="flex flex-wrap justify-start mb-5 mx-5  gap-4 p-4">
             {/* Example of a News Card */}
 
             {updates.map((update, index) => (

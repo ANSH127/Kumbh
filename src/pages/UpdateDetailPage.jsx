@@ -49,7 +49,7 @@ const UpdateDetailPage = () => {
         </header>
 
         {/* Article Content */}
-        <div className="max-w-3xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+        <div className="w-[80%] mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
           <p 
             onClick={() => navigate(-1)}
            className="inline-block mb-4 text-orange-500 font-bold cursor-pointer">
@@ -110,11 +110,11 @@ const UpdateDetailPage = () => {
         </div>
 
         {/* Related News Section */}
-        <div className="max-w-7xl mx-auto mt-10">
+        <div className="max-w-7xl mx-auto py-10">
           <h2 className="text-2xl font-bold text-orange-500 mb-6">
             More Related News
           </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
             {
                 latestUpdates &&
