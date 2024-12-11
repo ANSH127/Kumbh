@@ -57,7 +57,7 @@ export default function Packages() {
 
   React.useEffect(() => {
     filterPackages();
-  }, [userType, data2]);
+  }, [userType,data, data2]);
 
   return (
     <>
