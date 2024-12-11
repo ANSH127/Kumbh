@@ -12,20 +12,22 @@ const ImportantDates = () => {
   return (
     <>
       {/* Mobile View */}
-      <div className="w-full flex justify-center mt-[-30vw] sm:mt-[-8vw] md:hidden">
-        <div className="w-[65vw] h-auto bg-[#F88820] rounded-[4vw] z-20 p-[4vw] flex flex-col items-center shadow-lg">
-          <h1 className="font-bold sm:font-semibold text-[3.5vw] text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+      <div className="w-full flex justify-center mt-[-90vw] 
+      sm:mt-[-9vw]  md:hidden
+       ">
+        <div className="w-[90%] h-auto bg-[#F88820] rounded-[4vw] z-20 p-[4vw] flex flex-col items-center shadow-lg">
+          <h1 className="font-bold my-2 md:my-0 sm:font-semibold text-sm md:text-lg text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
             IMPORTANT DATES OF MAHAKUMBH 2025
           </h1>
 
-          <div className="grid grid-cols-2 gap-[2vw] w-full">
+          <div className="grid grid-cols-4 md:gap-[2vw] w-full">
             {dates.map((date, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <div key={index} className="flex flex-col items-center gap-4">
                 <div className="flex flex-col items-center bg-[#D9D9D9] rounded-[5vw] px-[6vw] py-[4vw]">
-                  <h1 className="text-[9vw] font-extrabold leading-none">{date.day}</h1>
-                  <h2 className="text-[5vw] font-bold leading-none text-center">{date.month}</h2>
+                  <h1 className="text-base md:text-[9vw] font-extrabold leading-none">{date.day}</h1>
+                  <h2 className=" text-base md:text-[5vw] font-bold leading-none text-center">{date.month}</h2>
                 </div>
-                <div className="text-[3vw] font-bold text-center mt-[2vw]">
+                <div className="md:text-[3vw] text-sm font-bold text-center my-1 md:mt-[2vw]">
                   <h1>{date.event.split(' ')[0]}</h1>
                   <h1 className="leading-none">{date.event.split(' ')[1]}</h1>
                 </div>
