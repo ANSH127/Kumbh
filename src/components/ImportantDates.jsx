@@ -12,7 +12,7 @@ const ImportantDates = () => {
   return (
     <>
       {/* Mobile View */}
-      <div className="w-full flex justify-center mt-[-90vw] 
+      <div className="w-full flex justify-center mt-[-70vw] 
       sm:mt-[-9vw]  md:hidden
        ">
         <div className="w-[90%] h-auto bg-[#F88820] rounded-[4vw] z-20 p-[4vw] flex flex-col items-center shadow-lg">

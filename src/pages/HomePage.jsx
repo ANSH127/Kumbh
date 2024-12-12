@@ -23,7 +23,6 @@ export default function HomePage() {
     setTimeout(() => {
       handleOpen();
     }, 5000);
-
   }, []);
 
   // useEffect(() => {
@@ -53,20 +52,25 @@ export default function HomePage() {
             <img
               src={Logo}
               alt="Logo"
-              className="w-[5.5vw] h-[5.5vw] inline-block relative -top-[0.2vw] ml-[-0.5vw] mr-[0.1vw]"
+              className="w-[7.5vw] h-[7.5vw]  md:w-[5.5vw] md:h-[5.5vw] inline-block relative -top-[0.2vw] ml-[-0.5vw] mr-[0.1vw]"
             />
             MBH 2025
           </h2>
 
-          <h3 className="text-base md:text-3xl   leading-none text-black">
+          <h3 className="text-base py-3 md:py-0 md:text-3xl   leading-none text-black">
             Experience the Spirituality of Life Time with{" "}
             <b>prayagrajkumbhmela.com</b>
           </h3>
+        <div className="flex justify-center">
+          <button className="bg-[#F88820] text-black text-sm md:text-2xl font-semibold py-2 px-3 md:py-3 md:px-6 mt-4 md:mt-6 rounded-full w-fit text-center md:hidden">
+          ENQUIRE NOW
+          </button>
+        </div>
         </div>
         <img
           src={Hero3}
           alt={`Hero3`}
-          className="w-full h-[60%]  md:h-[80%] lg:h-full object-cover carousel-images"
+          className="w-full h-[70%]  md:h-[80%] lg:h-full object-cover carousel-images"
         />
       </div>
       <ImportantDates />
