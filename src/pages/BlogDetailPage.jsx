@@ -124,6 +124,17 @@ const BlogDetailPage = () => {
                       {props.children}
                     </a>
                   ),
+                  image: (props) => {
+                    return (
+                      <div className="flex justify-center items-center py-5">
+                      <img
+                        src={builder.image(props.asset).url()}
+                        alt={props.alt}
+                        className=" h-[20rem] md:h-[35rem] w-[90%] object-cover"
+                      />
+                      </div>
+                    );
+                  }
                 }}
               />
             </div>

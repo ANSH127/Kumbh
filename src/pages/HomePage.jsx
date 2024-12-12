@@ -47,7 +47,7 @@ export default function HomePage() {
         w-full md:w-[60%]
         "
         >
-          <h2 className="text-2xl md:text-5xl font-bold tracking-[0.25em] leading-none">
+          <h2 className="text-2xl md:text-6xl font-bold tracking-[0.25em] leading-none">
             MAHAK
             <img
               src={Logo}
