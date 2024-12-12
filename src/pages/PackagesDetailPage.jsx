@@ -429,7 +429,11 @@ export default function PackagesDetailPage() {
                       Starting From
                     </h3>
                     <p className="text-2xl md:text-4xl font-bold text-black">
-                      ₹{packageData?.price}{" "}
+                      {
+                        packageData?.packageType==="indian"? "₹":"$"
+                      }
+
+                      {packageData?.price}{" "}
                       <span className="text-base md:text-lg font-medium text-gray-600">
                         Per Person
                       </span>
@@ -443,7 +447,9 @@ export default function PackagesDetailPage() {
                   </div>
                   <div className="pt-4 space-y-2 bg-[#F4F2E9] px-4 md:px-[20%] py-4">
                     <div className="flex flex-row md:flex-col gap-2">
-                      <a href="https://rzp.io/rzp/h3D5eXxJ" className="w-full">
+                      <a href=
+                      {packageData?.razorpayLink}
+                       className="w-full">
                         <button className="bg-[#F88820] text-white font-semibold w-full py-2 md:py-3 rounded-2xl shadow hover:text-black active:text-white focus:outline-none hover:ring hover:ring-blue-500">
                           BOOK NOW
                         </button>

@@ -42,7 +42,7 @@ export default function HomePage() {
       <Navbar />
       <div className="w-full h-[90vh] relative">
         <div
-          className="absolute top-1/3 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col
+          className="absolute top-1/4 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col
         w-full md:w-[60%]
         "
         >

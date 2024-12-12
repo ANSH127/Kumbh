@@ -57,7 +57,7 @@ export default function Packages() {
 
   React.useEffect(() => {
     filterPackages();
-  }, [userType,data, data2]);
+  }, [userType, data, data2]);
 
   return (
     <>
@@ -111,13 +111,47 @@ export default function Packages() {
       </div>
 
       <div className="flex justify-center mt-4">
-        <FormControlLabel
-          onChange={(e) =>
-            setUserType(e.target.checked ? "Indian" : "Foreigner")
-          }
-          control={<Switch defaultChecked color="warning" />}
-          label="Indian"
-        />
+        <div className="inline-flex rounded-md shadow-sm" role="group">
+          <input
+            type="radio"
+            name="userType"
+            value="Indian"
+            id="indian"
+            checked={userType === "Indian"}
+            onChange={(e) => setUserType(e.target.value)}
+            className="hidden"
+          />
+          <label
+            htmlFor="indian"
+            className={`px-4 py-2 border border-gray-300 cursor-pointer ${
+              userType === "Indian"
+                ? "bg-[#F88820] text-white"
+                : "bg-white text-gray-700"
+            } rounded-l-md hover:bg-[#F88820] hover:text-white transition duration-200`}
+          >
+            Indian
+          </label>
+
+          <input
+            type="radio"
+            name="userType"
+            value="Foreigner"
+            id="foreigner"
+            checked={userType === "Foreigner"}
+            onChange={(e) => setUserType(e.target.value)}
+            className="hidden"
+          />
+          <label
+            htmlFor="foreigner"
+            className={`px-4 py-2 border border-gray-300 cursor-pointer ${
+              userType === "Foreigner"
+                ? "bg-[#F88820] text-white"
+                : "bg-white text-gray-700"
+            } rounded-r-md hover:bg-[#F88820] hover:text-white transition duration-200`}
+          >
+            Foreigner
+          </label>
+        </div>
       </div>
       {loading ? (
         <Loadar />
@@ -150,7 +184,9 @@ export default function Packages() {
 
                   <div className="text-center -mt-4 md:-mt-0  pb-1 md:pb-3">
                     <p className=" text-base md:text-3xl font-extrabold text-center h-0 md:h-5 text-black my-4">
-                      ₹{item.discountedPrice}
+                      {userType === "Indian" ? "₹" : "$"}
+
+                      {item.discountedPrice}
                     </p>
                     <del
                       className="text-xs
@@ -158,7 +194,8 @@ export default function Packages() {
 
                    md:text-lg font-semibold text-black text-center"
                     >
-                      ₹{item.price}
+                      {userType === "Indian" ? "₹" : "$"}
+                      {item.price}
                     </del>
                   </div>
                   <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
