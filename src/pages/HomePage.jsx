@@ -19,18 +19,20 @@ export default function HomePage() {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       handleOpen();
     }, 5000);
+
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 8000); // Change image every 3 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   }, 8000); // Change image every 3 seconds
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [images.length]);
+  //   return () => clearInterval(interval); // Cleanup interval on component unmount
+  // }, [images.length]);
 
   return (
     <div>
@@ -62,8 +64,8 @@ export default function HomePage() {
           </h3>
         </div>
         <img
-          src={images[currentImageIndex]}
-          alt={`Hero${currentImageIndex + 1}`}
+          src={Hero3}
+          alt={`Hero3`}
           className="w-full h-[60%]  md:h-[80%] lg:h-full object-cover carousel-images"
         />
       </div>
