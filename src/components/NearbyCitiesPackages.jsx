@@ -62,6 +62,8 @@ const NearbyCitiesPackages = () => {
           className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
           size={30}
           onClick={scrollLeft}
+          style={{fontSize: "2rem"}}
+
         />
         <div
           ref={scrollRef}
@@ -78,7 +80,7 @@ const NearbyCitiesPackages = () => {
               className="bg-none shadow-lg mx-auto cursor-pointer  rounded-xl  min-w-[350px] h-fit "
             >
               <img
-                className="w-full h-auto shadow-none rounded-t-xl"
+                className="w-full h-auto  max-w-[350px] max-h-[200px] shadow-none rounded-t-xl"
                 src={builder.image(item.image).url()}
                 alt="Prime Hotels"
               />
@@ -135,6 +137,8 @@ const NearbyCitiesPackages = () => {
           className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
           size={30}
           onClick={scrollRight}
+          style={{fontSize: "2rem"}}
+
         />
       </div>}
 

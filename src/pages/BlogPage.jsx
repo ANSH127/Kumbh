@@ -10,6 +10,7 @@ function BlogPage() {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [language, setLanguage] = React.useState("English");
+  const [filteredData, setFilteredData] = React.useState([]);
 
   const fetchBlogs = async () => {
     const data = await client.fetch(`*[_type == 'blog']`);
@@ -22,10 +23,19 @@ function BlogPage() {
     fetchBlogs();
   }, []);
 
+  React.useEffect(() => {
+    if (language === "English") {
+      setFilteredData(data.filter((post) => post.language === "english"));
+    } else {
+      const filtered = data.filter((post) => post.language === "hindi");
+      setFilteredData(filtered);
+    }
+  }, [language, data]);
+
   return (
     <>
       <Navbar />
-      <div className="bg-[#F4F2E9] pt-10">
+      <div className="bg-[#F4F2E9] pt-10 md:pt-0">
         <div className="bg-[#F4F2E9] py-3 md:py-5 md:mt-[5vw]">
           <div className="flex items-center justify-center text-sm font-bold text-gray-800">
             <span className="mx-3 hidden md:block">
@@ -51,7 +61,7 @@ function BlogPage() {
             </div>
 
             <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 ml-6"></div>
-            <span className="mx-3 hidden md:block">www.mahakumbh.com</span>
+            <span className="mx-3 hidden md:block">www.prayagrajkumbhmela.com</span>
           </div>
 
           <div className="h-[2px] md:h-[3px] bg-black md:mb-4"></div>
@@ -132,28 +142,27 @@ function BlogPage() {
         ) : (
           <div className="w-[90%] mx-auto py-8 px-4 md:px-4 bg-[#F4F2E9]">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10 grid- flex-wrap">
-              {data.map((post, index) => (
-                <div
-                  key={index}
-                  className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 "
-                >
-                  <img
-                    src={builder.image(post.image).url()}
-                    alt={post.title}
-                    className="w-full h-48 md:h-64 object-cover"
-                  />
-                  <div className="p-4 ">
-                    <p className="text-xs md:text-base text-justify ">
-                      {post.description.substring(0, 150)}...
-                      <Link
-                        to={`/blog/${post._id}`}
-                        className="text-blue-500 hover:underline"
-                      >
-                        Read more
-                      </Link>
-                    </p>
+              {filteredData.map((post, index) => (
+                <Link to={`/blog/${post._id}`} key={index}>
+                  <div className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 ">
+                    <img
+                      src={builder.image(post.image).url()}
+                      alt={post.title}
+                      className="w-full h-48 md:h-64 object-cover"
+                    />
+                    <div className="p-4 ">
+                      <p className="text-xs md:text-base text-justify ">
+                        {post.description.substring(0, 150)}...
+                        <Link
+                          to={`/blog/${post._id}`}
+                          className="text-blue-500 hover:underline"
+                        >
+                          Read more
+                        </Link>
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

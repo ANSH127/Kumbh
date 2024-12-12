@@ -30,6 +30,7 @@ const BlogDetailPage = () => {
   };
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     fetchBlogData();
     fetchLatestBlogs();
   }, []);
@@ -130,7 +131,7 @@ const BlogDetailPage = () => {
                       <img
                         src={builder.image(props.asset).url()}
                         alt={props.alt}
-                        className=" h-[20rem] md:h-[35rem] w-[90%] object-cover"
+                        className=" md:h-[35rem] w-[90%] object-cover"
                       />
                       </div>
                     );
@@ -149,7 +150,8 @@ const BlogDetailPage = () => {
               {latestBlogs?.map((card, index) => (
                 <div
                   key={index}
-                  className="bg-[#F4F2E9] rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105"
+                  className="bg-[#F4F2E9] rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105 cursor-pointer"
+                  onClick={() => navigate(`/blog/${card._id}`)}
                 >
                   <img
                     src={builder.image(card.image).url()}

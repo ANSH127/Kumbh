@@ -10,6 +10,7 @@ import BlogPage from './pages/BlogPage'
 import BlogDetailPage from './pages/BlogDetailPage'
 import UpdatesPage from './pages/UpdatesPage'
 import UpdateDetailPage from './pages/UpdateDetailPage'
+import { useParams } from 'react-router-dom'
 function App() {
 
   return (
@@ -21,11 +22,21 @@ function App() {
         <Route path="/enquiry" element={<EnquiryPage />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/updates" element={<UpdatesPage />} />
-        <Route path="/blog/:id" element={<BlogDetailPage />} />
-        <Route path="/update/:id" element={<UpdateDetailPage />} />
+        <Route path="/blog/:id" element={<BlogWrapper />} />
+        <Route path="/update/:id" element={<UpdateWrapper />} />
       </Routes>
     </Router>
   )
+}
+
+const BlogWrapper = () => {
+  const { id } = useParams();
+  return <BlogDetailPage key={id} />;
+}
+
+const UpdateWrapper = () => {
+  const { id } = useParams();
+  return <UpdateDetailPage key={id} />;
 }
 
 export default App

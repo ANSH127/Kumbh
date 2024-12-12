@@ -6,12 +6,12 @@ import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
 
 const UpdatesPage = () => {
-  const [email, setEmail] = useState("");
   const [activeTab, setActiveTab] = useState(0);
   const [updates, setUpdates] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
   const [language, setLanguage] = React.useState("English");
+  const [filteredData, setFilteredData] = React.useState([]);
 
 
   const handleTabClick = (index) => {
@@ -31,6 +31,15 @@ const UpdatesPage = () => {
     window.scrollTo(0, 0);
     fetchUpdates();
   }, []);
+
+  React.useEffect(() => {
+    if (language === "English") {
+      setFilteredData(updates.filter((post) => post.language === "english"));
+    } else {
+      const filtered = updates.filter((post) => post.language === "hindi");
+      setFilteredData(filtered);
+    }
+  }, [language, updates]);
   return (
     <>
       <Navbar />
@@ -128,7 +137,7 @@ const UpdatesPage = () => {
           <div className="flex flex-wrap justify-start mb-5 mx-5  gap-4 p-4">
             {/* Example of a News Card */}
 
-            {updates.map((update, index) => (
+            {filteredData.map((update, index) => (
               <div
                 key={index}
                 className="bg-white w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 rounded-lg shadow-lg transition-transform transform hover:-translate-y-2"
