@@ -11,6 +11,7 @@ const UpdatesPage = () => {
   const [updates, setUpdates] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
+  const [language, setLanguage] = React.useState("English");
 
 
   const handleTabClick = (index) => {
@@ -75,6 +76,48 @@ const UpdatesPage = () => {
                 {tab}
               </button>
             ))}
+          </div>
+        </div>
+        <div className="flex justify-center mt-4">
+          <div className="inline-flex rounded-md shadow-sm" role="group">
+            <input
+              type="radio"
+              name="userType"
+              value="English"
+              id="english"
+              checked={language === "English"}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="hidden"
+            />
+            <label
+              htmlFor="english"
+              className={`px-4 py-2 border border-gray-300 cursor-pointer ${
+                language === "English"
+                  ? "bg-[#F88820] text-white"
+                  : "bg-white text-gray-700"
+              } rounded-l-md hover:bg-[#F88820] hover:text-white transition duration-200`}
+            >
+              English
+            </label>
+            <input
+              type="radio"
+              name="userType"
+              value="Hindi"
+              id="hindi"
+              checked={language === "Hindi"}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="hidden"
+            />
+            <label
+              htmlFor="hindi"
+              className={`px-4 py-2 border border-gray-300 cursor-pointer ${
+                language === "Hindi"
+                  ? "bg-[#F88820] text-white"
+                  : "bg-white text-gray-700"
+              } hover:bg-[#F88820] hover:text-white transition duration-200`}
+            >
+              Hindi
+            </label>
           </div>
         </div>
 
