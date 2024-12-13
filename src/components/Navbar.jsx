@@ -95,6 +95,49 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+
+      {/* Social Media Links */}
+      <div className="flex space-x-6 justify-center mt-8">
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-3xl"
+        >
+          <i className="fab fa-facebook-square"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-3xl"
+        >
+          <i className="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://twitter.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-3xl"
+        >
+          <i className="fab fa-twitter"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-3xl"
+        >
+          <i className="fab fa-linkedin"></i>
+        </a>
+      </div>
+
+      {/* Contact Section */}
+      <div className="flex flex-col mt-8 bg-white text-black px-2 rounded-lg shadow-lg mx-2">
+        <p className="font-bold text-center">Need Help?</p>
+        <p>Call us: +91 8932951318</p>
+        <p>Mail us: kumbhindia@gmail.com</p>
+      </div>
       </div>
     </nav>
   );

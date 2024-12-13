@@ -13,7 +13,6 @@ const UpdatesPage = () => {
   const [language, setLanguage] = React.useState("English");
   const [filteredData, setFilteredData] = React.useState([]);
 
-
   const handleTabClick = (index) => {
     setActiveTab(index);
     // Add functionality to display relevant news based on the tab clicked
@@ -66,7 +65,7 @@ const UpdatesPage = () => {
 
         {/* Tabs Section */}
         <div className="flex justify-center my-4">
-          <div className="tabs flex space-x-2">
+          <div className="tabs flex flex-wrap justify-center gap-y-2 space-x-2">
             {[
               "Latest News",
               "Rituals",
@@ -157,8 +156,6 @@ const UpdatesPage = () => {
                 </p>
               </div>
             ))}
-
-
           </div>
         )}
 

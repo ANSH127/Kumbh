@@ -9,11 +9,13 @@ import Logo from "../assets/img/logo.png";
 import NearbyCitiesPackages from "../components/NearbyCitiesPackages";
 import TourPackages from "../components/TourPackages";
 import CustmoizeModel from "../components/CustmoizeModel";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const [open, setOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [Hero1, Hero2, Hero3];
+  const navigate = useNavigate();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,7 +64,9 @@ export default function HomePage() {
             <b>prayagrajkumbhmela.com</b>
           </h3>
         <div className="flex justify-center">
-          <button className="bg-[#F88820] text-black text-sm md:text-2xl font-semibold py-2 px-3 md:py-3 md:px-6 mt-4 md:mt-6 rounded-full w-fit text-center md:hidden">
+          <button className="bg-[#F88820] text-black text-sm md:text-2xl font-semibold py-2 px-3 md:py-3 md:px-6 mt-4 md:mt-6 rounded-full w-fit text-center md:hidden"
+          onClick={()=>navigate("/enquiry")}>
+          
           ENQUIRE NOW
           </button>
         </div>
