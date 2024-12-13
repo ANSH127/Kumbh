@@ -18,7 +18,7 @@ const UpdateDetailPage = () => {
 
   const fetchUpdateData = async () => {
     const data = await client.getDocument(id);
-    console.log(data);
+    // console.log(data);
     setData(data);
   };
 
@@ -27,7 +27,7 @@ const UpdateDetailPage = () => {
       `*[_type == 'melaupdate'] | order(_createdAt desc) [0...4]`
     );
     setLatestUpdates(data);
-    console.log(data);
+    // console.log(data);
   };
 
   React.useEffect(() => {

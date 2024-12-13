@@ -23,7 +23,7 @@ export default function FoodPackages() {
   const fetchPopularFoodSpots = async () => {
     const data = await client.fetch(`*[_type == 'foodspot']`);
     setPopularFoodSpots(data);
-    console.log(data);
+    // console.log(data);
   };
 
   React.useEffect(() => {

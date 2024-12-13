@@ -14,7 +14,7 @@ function BlogPage() {
 
   const fetchBlogs = async () => {
     const data = await client.fetch(`*[_type == 'blog']`);
-    console.log(data);
+    // console.log(data);
     setData(data);
     setLoading(false);
   };

@@ -20,7 +20,7 @@ const UpdatesPage = () => {
 
   const fetchUpdates = async () => {
     const data = await client.fetch(`*[_type == 'melaupdate']`);
-    console.log(data);
+    // console.log(data);
 
     setUpdates(data);
     setLoading(false);
