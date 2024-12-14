@@ -4,37 +4,39 @@ import Navbar from "../components/Navbar";
 import { client, builder } from "../api/SanityClient";
 import { useNavigate } from "react-router-dom";
 import Loadar from "../components/Loadar";
-import { useParams } from "react-router-dom";
 import PortableText from "react-portable-text";
 import Footer from "../components/Footer";
-
+import { useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const UpdateDetailPage = () => {
+  const location = useLocation();
+
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { updateData } = location.state || {};
 
-  const [data, setData] = React.useState(null);
-  const [latestUpdates, setLatestUpdates] = React.useState(null);
-
-  const fetchUpdateData = async () => {
-    const data = await client.getDocument(id);
-    // console.log(data);
-    setData(data);
-  };
-
-  const fetchLatestUpdates = async () => {
-    const data = await client.fetch(
-      `*[_type == 'melaupdate'] | order(_createdAt desc) [0...4]`
-    );
-    setLatestUpdates(data);
-    // console.log(data);
-  };
+  const {
+    data: latestUpdates,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["latestmelaupdate"],
+    queryFn: async () => {
+      const data = await client.fetch(
+        `*[_type == 'melaupdate'] | order(_createdAt desc) [0...4]`
+      );
+      return data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    fetchUpdateData();
-    fetchLatestUpdates();
   }, []);
+
+  const handleDetailsClick = (item) => {
+    navigate(`/update/${item._id}`, { state: { updateData: item } });
+  };
 
   return (
     <>
@@ -50,35 +52,35 @@ const UpdateDetailPage = () => {
 
         {/* Article Content */}
         <div className="md:w-[80%] w-full mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-          <p 
+          <p
             onClick={() => navigate(-1)}
-           className="inline-block mb-4 text-orange-500 font-bold cursor-pointer">
+            className="inline-block mb-4 text-orange-500 font-bold cursor-pointer"
+          >
             &larr; Back to Main Page
           </p>
-          {
-            data && data.image &&
+          {updateData && updateData.image && (
             <img
-            src={builder.image(data?.image).url()}
-            alt="Article Image"
-            className="w-full rounded-lg mb-6"
-          />}
+              src={builder.image(updateData?.image).url()}
+              alt="Article Image"
+              className="w-full rounded-lg mb-6"
+            />
+          )}
           <h1 className="text-3xl font-bold text-orange-500 mb-4">
-            {data?.title}
+            {updateData?.title}
           </h1>
           <p className="text-gray-600 text-sm mb-4">
-            Published on: {
-                new Date(data?._createdAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                })
-            } | Author: Admin
+            Published on:{" "}
+            {new Date(updateData?._createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}{" "}
+            | Author: Admin
           </p>
-          {
-            data && data.content &&
+          {updateData && updateData.content && (
             <div className="mb-4">
-          <PortableText
-                content={data && data.content}
+              <PortableText
+                content={updateData && updateData.content}
                 projectId="vnmkbnfo"
                 dataset="production"
                 className="text-gray-700 text-base font-sans"
@@ -106,7 +108,8 @@ const UpdateDetailPage = () => {
                   ),
                 }}
               />
-          </div>}
+            </div>
+          )}
         </div>
 
         {/* Related News Section */}
@@ -115,33 +118,28 @@ const UpdateDetailPage = () => {
             More Related News
           </h2>
           <div className="  grid gap-6 sm:grid-cols-3 lg:grid-cols-4">
-
-            {
-                latestUpdates &&
-                latestUpdates.map((update, index) => (
-                    <div
-                    key={index}
-                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-transform transform hover:-translate-y-1"
+            {latestUpdates &&
+              latestUpdates.map((update, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-transform transform hover:-translate-y-1"
+                >
+                  <img
+                    src={builder.image(update.image).url()}
+                    alt="News Image"
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold mb-2">{update.title}</h3>
+                    <button
+                      onClick={() => handleDetailsClick(update)}
+                      className="block w-full bg-orange-500 text-white py-2 rounded-lg mt-4 hover:bg-orange-600"
                     >
-                    <img
-                        src={builder.image(update.image).url()}
-                        alt="News Image"
-                        className="w-full h-40 object-cover"
-                    />
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold mb-2">
-                        {update.title}
-                        </h3>
-                        <button
-                        onClick={() => navigate(`/update/${update._id}`)}
-                        className="block w-full bg-orange-500 text-white py-2 rounded-lg mt-4 hover:bg-orange-600"
-                        >
-                        Read More
-                        </button>
-                    </div>
-                    </div>
-                ))
-            }
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

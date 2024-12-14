@@ -4,39 +4,27 @@ import PackageTop from "../assets/img/Packagetop.png";
 import Hero1 from "../assets/img/Hero1.jpeg";
 import Footer from "../components/Footer";
 import EnquiryModel from "../components/EnquiryModel";
-import { client, builder } from "../api/SanityClient";
-import { useParams } from "react-router-dom";
+import { builder } from "../api/SanityClient";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Loadar from "../components/Loadar";
+import { useLocation } from 'react-router-dom';
+
 
 export default function PackagesDetailPage() {
+  const location=useLocation();
+  const { packageData } = location.state || {};
+
   const [open, setOpen] = React.useState(false);
   const [section, setSection] = React.useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { id } = useParams();
-  const [packageData, setPackageData] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-
-  const fetchPackageData = async () => {
-    const data = await client.getDocument(id);
-    // console.log(data);
-    // console.log(data.faq);
-
-    setPackageData(data);
-    setLoading(false);
-  };
 
   useEffect(() => {
 
     window.scrollTo(0, 0);
-
-    fetchPackageData();
-    // i want to run 1 time handle open function after 5 seconds
     setTimeout(() => {
       handleOpen();
     }, 5000);
@@ -100,7 +88,6 @@ export default function PackagesDetailPage() {
       </div>
 
       {
-        loading? <Loadar/>:
         <>
           <div
             className="mt-[2%] text-left ml-[10%] md:ml-[6%] flex md:flex-row flex-col"

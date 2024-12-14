@@ -5,25 +5,42 @@ import { client, builder } from "../api/SanityClient";
 import React from "react";
 import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+
 
 function BlogPage() {
-  const [data, setData] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+  const navigate = useNavigate();
   const [language, setLanguage] = React.useState("English");
   const [filteredData, setFilteredData] = React.useState([]);
 
-  const fetchBlogs = async () => {
-    const data = await client.fetch(`*[_type == 'blog']`);
-    // console.log(data);
-    setData(data);
-    setLoading(false);
-  };
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-    fetchBlogs();
-  }, []);
+
+
+  let { data, isLoading, error } = useQuery({
+    queryKey: ["blog"],
+    queryFn: async () => {
+      const data = await client.fetch(`*[_type == 'blog']`);
+      return data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
+
+  if (error) {
+    console.log(error);
+  }
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+    
+  }, []);
+
+  const handleDetailsClick = (item) => {
+    navigate(`/blog/${item._id}`, { state: { blogData: item } });
+  };
+
+
+  React.useEffect(() => {
+    if(isLoading) return;
     if (language === "English") {
       setFilteredData(data.filter((post) => post.language === "english"));
     } else {
@@ -137,13 +154,15 @@ function BlogPage() {
           </div>
         </div>
 
-        {loading ? (
+        {isLoading ? (
           <Loadar />
         ) : (
           <div className="w-[90%] mx-auto py-8 px-4 md:px-4 bg-[#F4F2E9]">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10 grid- flex-wrap">
               {filteredData.map((post, index) => (
-                <Link to={`/blog/${post._id}`} key={index}>
+                <div 
+                onClick={() => handleDetailsClick(post)}
+                 key={index}>
                   <div className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 ">
                     <img
                       src={builder.image(post.image).url()}
@@ -153,16 +172,16 @@ function BlogPage() {
                     <div className="p-4 ">
                       <p className="text-xs md:text-base text-justify ">
                         {post.description.substring(0, 150)}...
-                        <Link
-                          to={`/blog/${post._id}`}
+                        <p
+                          onClick={() => handleDetailsClick(post)}
                           className="text-blue-500 hover:underline"
                         >
                           Read more
-                        </Link>
+                        </p>
                       </p>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

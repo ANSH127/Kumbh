@@ -1,15 +1,12 @@
 import React, { useRef } from "react";
-import varanasiImage from "../assets/img/varanasi.png";
-import vindhyachalImage from "../assets/img/vindhyachal.png";
-import chitrakootImage from "../assets/img/chitrakoot.png";
-import ayodhyaImage from "../assets/img/ayodhya.png";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+import { useQuery } from "@tanstack/react-query";
+
 import { client, builder } from "../api/SanityClient";
 export default function FoodPackages() {
-  const [popularFoodSpots, setPopularFoodSpots] = React.useState([]);
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -19,16 +16,14 @@ export default function FoodPackages() {
   const scrollRight = () => {
     scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
   };
-
-  const fetchPopularFoodSpots = async () => {
-    const data = await client.fetch(`*[_type == 'foodspot']`);
-    setPopularFoodSpots(data);
-    // console.log(data);
-  };
-
-  React.useEffect(() => {
-    fetchPopularFoodSpots();
-  }, []);
+  const { data:popularFoodSpots, isLoading, error } = useQuery({
+    queryKey: ["foodspot"],
+    queryFn: async () => {
+      const data = await client.fetch(`*[_type == 'foodspot']`);
+      return data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
   return (
     <div className="w-full h-auto bg-[#F4F2E9] flex flex-col justify-center pb-12 relative">
@@ -47,7 +42,7 @@ export default function FoodPackages() {
             scrollbarWidth: "none",
           }}
         >
-          {popularFoodSpots.map((foodSpot) => (
+          {!isLoading && popularFoodSpots.map((foodSpot) => (
             <div
               key={foodSpot._id}
               className="bg-white p-2 sm:p-4 rounded-xl md:rounded-2xl lg:rounded-3xl mx-auto min-w-[50%] md:min-w-[25%] lg:min-w-[20%]"

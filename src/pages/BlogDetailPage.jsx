@@ -6,33 +6,37 @@ import PortableText from "react-portable-text";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useLocation } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
+
 
 const BlogDetailPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
-  const [data, setData] = React.useState(null);
-  const [latestBlogs, setLatestBlogs] = React.useState(null);
+  const { blogData } = location.state || {};
 
-  const fetchBlogData = async () => {
-    const data = await client.getDocument(id);
-    // console.log(data);
-    setData(data);
-  };
 
-  // fetch 5 lastes blog posts
 
-  const fetchLatestBlogs = async () => {
-    const data = await client.fetch(
-      `*[_type == "blog"] | order(_createdAt desc) [0...4]`
-    );
-    setLatestBlogs(data);
-    // console.log(data);
+  const { data:latestBlogs, isLoading, error } = useQuery({
+    queryKey: ["latestblog"],
+    queryFn: async () => {
+      const data = await client.fetch(
+        `*[_type == "blog"] | order(_createdAt desc) [0...4]`
+
+      );
+      return data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
+
+
+  const handleDetailsClick = (item) => {
+    navigate(`/blog/${item._id}`, { state: { blogData: item } });
   };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    fetchBlogData();
-    fetchLatestBlogs();
   }, []);
 
   return (
@@ -90,16 +94,16 @@ const BlogDetailPage = () => {
           className="text-[5.1vw] md:text-3xl font-bold text-gray-800 uppercase text-left mb-4"
           style={{ fontFamily: "Fraunces, serif" }}
         >
-          {data && data.title}
+          {blogData && blogData.title}
         </h1>
 
         <hr className="border-t-2 border-black md:border-gray-300 mb-6" />
 
-        {data && data.content && (
+        {blogData && blogData.content && (
           <div className="md:flex">
             <div className=" text-gray-700 text-left">
               <PortableText
-                content={data && data.content}
+                content={blogData && blogData.content}
                 projectId="vnmkbnfo"
                 dataset="production"
                 className="text-gray-700 text-base font-sans"
@@ -151,7 +155,7 @@ const BlogDetailPage = () => {
                 <div
                   key={index}
                   className="bg-[#F4F2E9] rounded-xl shadow-md overflow-hidden transform transition-transform hover:scale-105 cursor-pointer"
-                  onClick={() => navigate(`/blog/${card._id}`)}
+                  onClick={() => handleDetailsClick(card)}
                 >
                   <img
                     src={builder.image(card.image).url()}
@@ -162,7 +166,7 @@ const BlogDetailPage = () => {
                     <h2 className="text-lg font-regular lg:font-medium text-gray-800">
                       {card.title}...
                       <p
-                        onClick={() => navigate(`/blog/${card._id}`)}
+                        onClick={() => handleDetailsClick(card)}
                         className="text-blue-500 hover:underline cursor-pointer"
                       >
                         read more

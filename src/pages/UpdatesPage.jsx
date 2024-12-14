@@ -4,12 +4,11 @@ import { client, builder } from "../api/SanityClient";
 import { useNavigate } from "react-router-dom";
 import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
+import { useQuery } from "@tanstack/react-query";
 
 const UpdatesPage = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [updates, setUpdates] = useState([]);
   const navigate = useNavigate();
-  const [loading, setLoading] = React.useState(true);
   const [language, setLanguage] = React.useState("English");
   const [filteredData, setFilteredData] = React.useState([]);
 
@@ -18,27 +17,36 @@ const UpdatesPage = () => {
     // Add functionality to display relevant news based on the tab clicked
   };
 
-  const fetchUpdates = async () => {
-    const data = await client.fetch(`*[_type == 'melaupdate']`);
-    // console.log(data);
+  let { data, isLoading, error } = useQuery({
+    queryKey: ["melaupdate"],
+    queryFn: async () => {
+      const data = await client.fetch(`*[_type == 'melaupdate']`);
+      return data;
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
 
-    setUpdates(data);
-    setLoading(false);
-  };
+  if (error) {
+    console.log(error);
+  }
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    fetchUpdates();
   }, []);
 
   React.useEffect(() => {
+    if (isLoading) return;
     if (language === "English") {
-      setFilteredData(updates.filter((post) => post.language === "english"));
+      setFilteredData(data.filter((post) => post.language === "english"));
     } else {
-      const filtered = updates.filter((post) => post.language === "hindi");
+      const filtered = data.filter((post) => post.language === "hindi");
       setFilteredData(filtered);
     }
-  }, [language, updates]);
+  }, [language, data]);
+
+  const handleDetailsClick = (item) => {
+    navigate(`/update/${item._id}`, { state: { updateData: item } });
+  };
   return (
     <>
       <Navbar />
@@ -130,7 +138,7 @@ const UpdatesPage = () => {
         </div>
 
         {/* News Cards Section */}
-        {loading ? (
+        {isLoading ? (
           <Loadar />
         ) : (
           <div className="flex flex-wrap justify-start mb-5 mx-5  gap-4 p-4">
@@ -149,7 +157,7 @@ const UpdatesPage = () => {
                 <h3 className="text-xl font-bold mb-2">{update.title}</h3>
                 <p className="text-gray-700 mb-4">{update.description}</p>
                 <p
-                  onClick={() => navigate(`/update/${update._id}`)}
+                  onClick={()=>handleDetailsClick(update)}
                   className="bg-[#F88820] text-white px-4 py-2 rounded-md font-bold w-fit cursor-pointer"
                 >
                   Read More
