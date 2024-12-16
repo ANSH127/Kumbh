@@ -1,10 +1,10 @@
-
 import Navbar from "../components/Navbar";
 import A1 from "../assets/img/Hero3.jpeg";
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import { enquiryCollection } from "../api/firebase";
 import { addDoc } from "firebase/firestore";
+import { Helmet } from "react-helmet";
 
 export default function EnquiryPage() {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,6 @@ export default function EnquiryPage() {
       date === "" ||
       duration === "" ||
       msg === ""
-
     ) {
       alert("Please fill all the fields");
       return;
@@ -65,9 +64,19 @@ export default function EnquiryPage() {
     window.scrollTo(0, 0);
   }, []);
 
-
   return (
     <div>
+      <Helmet>
+        <title>Prayagraj Kumbh Mela 2025- Enquiry</title>
+        <meta
+          name="description"
+          content="Prayagraj Kumbh Mela 2025 - Enquiry"
+        />
+        <meta
+          name="keywords"
+          content="Prayagraj Kumbh Mela 2025, Kumbh Mela 2025, Kumbh Mela, Prayagraj Kumbh Mela, Kumbh Mela 2025 Tour Packages, Kumbh Mela 2025 Important Dates, Kumbh Mela 2025 Nearby Cities"
+        />
+      </Helmet>
       <Navbar />
       <div className="MobileView flex flex-col md:flex-row justify-center mt-[10%]">
         <img
@@ -222,7 +231,6 @@ export default function EnquiryPage() {
               Your Specific Requirment:
             </label>
             <textarea
-            
               id="msg"
               name="msg"
               value={msg}

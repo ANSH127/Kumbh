@@ -6,9 +6,9 @@ import PortableText from "react-portable-text";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
+import { Helmet } from "react-helmet";
 
 const BlogDetailPage = () => {
   const { id } = useParams();
@@ -16,20 +16,20 @@ const BlogDetailPage = () => {
   const navigate = useNavigate();
   const { blogData } = location.state || {};
 
-
-
-  const { data:latestBlogs, isLoading, error } = useQuery({
+  const {
+    data: latestBlogs,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["latestblog"],
     queryFn: async () => {
       const data = await client.fetch(
         `*[_type == "blog"] | order(_createdAt desc) [0...4]`
-
       );
       return data;
     },
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
-
 
   const handleDetailsClick = (item) => {
     navigate(`/blog/${item._id}`, { state: { blogData: item } });
@@ -41,7 +41,13 @@ const BlogDetailPage = () => {
 
   return (
     <>
-    <Navbar />
+      <Helmet>
+        <title>{blogData.meta_title}</title>
+        <meta name="description" content={blogData.meta_description} />
+        <meta name="keywords" content={blogData.meta_keywords} />
+      </Helmet>
+
+      <Navbar />
       {/* Header Section */}
       <div className="bg-[#F4F2E9] py-3 md:py-5 md:mt-[5vw]">
         <div className="flex items-center justify-center text-sm font-bold text-gray-800">
@@ -132,14 +138,14 @@ const BlogDetailPage = () => {
                   image: (props) => {
                     return (
                       <div className="flex justify-center items-center py-5">
-                      <img
-                        src={builder.image(props.asset).url()}
-                        alt={props.alt}
-                        className=" md:h-[35rem] w-[90%] object-cover"
-                      />
+                        <img
+                          src={builder.image(props.asset).url()}
+                          alt={props.alt}
+                          className=" md:h-[35rem] w-[90%] object-cover"
+                        />
                       </div>
                     );
-                  }
+                  },
                 }}
               />
             </div>

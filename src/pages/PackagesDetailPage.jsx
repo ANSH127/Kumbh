@@ -8,11 +8,11 @@ import { builder } from "../api/SanityClient";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useLocation } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function PackagesDetailPage() {
-  const location=useLocation();
+  const location = useLocation();
   const { packageData } = location.state || {};
 
   const [open, setOpen] = React.useState(false);
@@ -21,9 +21,7 @@ export default function PackagesDetailPage() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
   useEffect(() => {
-
     window.scrollTo(0, 0);
     setTimeout(() => {
       handleOpen();
@@ -32,6 +30,12 @@ export default function PackagesDetailPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>{packageData.meta_title}</title>
+        <meta name="description" content={packageData.meta_description} />
+        <meta name="keywords" content={packageData.meta_keywords} />
+      </Helmet>
+
       <Navbar />
       <EnquiryModel
         open={open}
@@ -416,10 +420,7 @@ export default function PackagesDetailPage() {
                       Starting From
                     </h3>
                     <p className="text-2xl md:text-4xl font-bold text-black">
-                      {
-                        packageData?.packageType==="indian"? "₹":"$"
-                      }
-
+                      {packageData?.packageType === "indian" ? "₹" : "$"}
                       {packageData?.price}{" "}
                       <span className="text-base md:text-lg font-medium text-gray-600">
                         Per Person
@@ -434,9 +435,7 @@ export default function PackagesDetailPage() {
                   </div>
                   <div className="pt-4 space-y-2 bg-[#F4F2E9] px-4 md:px-[20%] py-4">
                     <div className="flex flex-row md:flex-col gap-2">
-                      <a href=
-                      {packageData?.razorpayLink}
-                       className="w-full">
+                      <a href={packageData?.razorpayLink} className="w-full">
                         <button className="bg-[#F88820] text-white font-semibold w-full py-2 md:py-3 rounded-2xl shadow hover:text-black active:text-white focus:outline-none hover:ring hover:ring-blue-500">
                           BOOK NOW
                         </button>

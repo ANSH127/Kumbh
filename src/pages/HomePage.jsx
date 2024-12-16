@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Hero1 from "../assets/img/Hero1.jpeg";
-import Hero2 from "../assets/img/Hero2.jpeg";
 import Hero3 from "../assets/img/Hero3.jpeg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -10,11 +8,10 @@ import NearbyCitiesPackages from "../components/NearbyCitiesPackages";
 import TourPackages from "../components/TourPackages";
 import CustmoizeModel from "../components/CustmoizeModel";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function HomePage() {
   const [open, setOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [Hero1, Hero2, Hero3];
   const navigate = useNavigate();
 
   const handleOpen = () => setOpen(true);
@@ -27,16 +24,21 @@ export default function HomePage() {
     }, 5000);
   }, []);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 8000); // Change image every 3 seconds
-
-  //   return () => clearInterval(interval); // Cleanup interval on component unmount
-  // }, [images.length]);
-
   return (
     <div>
+      <Helmet>
+        <title>Prayagraj Kumbh Mela 2025- HomePage</title>
+        <meta
+          name="description"
+          content="Prayagraj Kumbh Mela 2025 - Experience the Spirituality of Life Time with prayagrajkumbhmela.com"
+        />
+        <meta
+          name="keywords"
+          content="
+        Prayagraj Kumbh Mela 2025, Kumbh Mela 2025, Kumbh Mela, Prayagraj Kumbh Mela, Kumbh Mela 2025 Tour Packages, Kumbh Mela 2025 Important Dates, Kumbh Mela 2025 Nearby Cities
+        "
+        />
+      </Helmet>
       <CustmoizeModel
         open={open}
         handleOpen={handleOpen}
@@ -63,13 +65,14 @@ export default function HomePage() {
             Experience the Spirituality of Life Time with{" "}
             <b>prayagrajkumbhmela.com</b>
           </h3>
-        <div className="flex justify-center">
-          <button className="bg-[#F88820] text-black text-sm md:text-2xl font-semibold py-2 px-3 md:py-3 md:px-6 mt-4 md:mt-6 rounded-full w-fit text-center md:hidden"
-          onClick={()=>navigate("/enquiry")}>
-          
-          ENQUIRE NOW
-          </button>
-        </div>
+          <div className="flex justify-center">
+            <button
+              className="bg-[#F88820] text-black text-sm md:text-2xl font-semibold py-2 px-3 md:py-3 md:px-6 mt-4 md:mt-6 rounded-full w-fit text-center md:hidden"
+              onClick={() => navigate("/enquiry")}
+            >
+              ENQUIRE NOW
+            </button>
+          </div>
         </div>
         <img
           src={Hero3}

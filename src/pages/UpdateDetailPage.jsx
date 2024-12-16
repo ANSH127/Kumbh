@@ -8,6 +8,7 @@ import PortableText from "react-portable-text";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const UpdateDetailPage = () => {
   const location = useLocation();
@@ -40,6 +41,11 @@ const UpdateDetailPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{updateData.meta_title}</title>
+        <meta name="description" content={updateData.meta_description} />
+        <meta name="keywords" content={updateData.meta_keywords} />
+      </Helmet>
       <Navbar />
       <div className="md:mt-20 lg:mt-20">
         {/* Header Section */}
