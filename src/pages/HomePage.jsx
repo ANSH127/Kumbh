@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Hero3 from "../assets/img/Hero3.jpeg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -27,17 +27,33 @@ export default function HomePage() {
   return (
     <div>
       <Helmet>
-        <title>Prayagraj Kumbh Mela 2025- HomePage</title>
+        <title>
+          Prayagraj Kumbh Mela 2025 - Book Packages, Dates, and Tour Guide
+        </title>
         <meta
           name="description"
-          content="Prayagraj Kumbh Mela 2025 - Experience the Spirituality of Life Time with prayagrajkumbhmela.com"
+          content="Plan your spiritual journey to Prayagraj Kumbh Mela 2025. Find tour packages, shahi snan dates, top attractions, accommodation, and travel tips for an unforgettable experience."
         />
         <meta
           name="keywords"
-          content="
-        Prayagraj Kumbh Mela 2025, Kumbh Mela 2025, Kumbh Mela, Prayagraj Kumbh Mela, Kumbh Mela 2025 Tour Packages, Kumbh Mela 2025 Important Dates, Kumbh Mela 2025 Nearby Cities
-        "
+          content="Prayagraj Kumbh Mela 2025, Kumbh Mela 2025 tour packages, Kumbh Mela dates, Prayagraj accommodation, Shahi Snan dates 2025, Maha Kumbh Mela rituals, Kumbh Mela attractions, Prayagraj travel guide, Maha Kumbh Mela tourism"
         />
+        <meta name="author" content="prayagrajkumbhmela.com" />
+        <meta
+          property="og:title"
+          content="Prayagraj Kumbh Mela 2025 - Tour Packages, Dates, and Guide"
+        />
+        <meta
+          property="og:description"
+          content="Discover Prayagraj Kumbh Mela 2025 with exclusive tour packages, important bathing dates, and spiritual attractions. Explore the Maha Kumbh Mela and plan your perfect pilgrimage."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prayagrajkumbhmela.com" />
+        <meta
+          property="og:image"
+          content="https://prayagrajkumbhmela.com/static/kumbh-mela-banner.jpg"
+        />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com" />
       </Helmet>
       <CustmoizeModel
         open={open}
