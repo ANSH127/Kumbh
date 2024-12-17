@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import CoverImage from "../assets/img/blogcover.jpg";
 
 function BlogPage() {
   const navigate = useNavigate();
@@ -121,7 +122,7 @@ function BlogPage() {
         <div
           className="relative bg-cover bg-center w-[90%] h-[30vh] md:h-[45vh] mx-auto rounded-xl "
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1603868465911-94fe7e439661?q=80&w=2862&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+            backgroundImage: `url(${CoverImage})`,
           }}
         >
           <div className="absolute inset-0 opacity-50"></div>

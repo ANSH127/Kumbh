@@ -37,12 +37,12 @@ const data = [
     description:
       "The tour was good overall. The team was knowledgeable and friendly, but I wish there was more flexibility in the itinerary. Still, a very well-planned experience for such a massive event!",
   },
-  {
-    name: "Priya Gupta",
-    rating: 5,
-    description:
-      "Unforgettable trip! Kumbh ka spiritual environment aur Prayagraj ka local touch dono hi humein bahut pasand aaya. Har ek cheez smooth thi, especially the hotel arrangements aur transport. 5-star experience!",
-  },
+  // {
+  //   name: "Priya Gupta",
+  //   rating: 5,
+  //   description:
+  //     "Unforgettable trip! Kumbh ka spiritual environment aur Prayagraj ka local touch dono hi humein bahut pasand aaya. Har ek cheez smooth thi, especially the hotel arrangements aur transport. 5-star experience!",
+  // },
 ];
 
 export default function TrustedBy() {
