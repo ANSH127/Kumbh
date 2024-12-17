@@ -67,15 +67,36 @@ export default function EnquiryPage() {
   return (
     <div>
       <Helmet>
-        <title>Prayagraj Kumbh Mela 2025- Enquiry</title>
+        <title>
+          Prayagraj Kumbh Mela 2025 Enquiry | Customize Your Kumbh Tour
+        </title>
         <meta
           name="description"
-          content="Prayagraj Kumbh Mela 2025 - Enquiry"
+          content="Enquire now to customize your Prayagraj Kumbh Mela 2025 tour packages. Plan your trip, book accommodations, and get tailored Maha Kumbh travel solutions."
         />
         <meta
           name="keywords"
-          content="Prayagraj Kumbh Mela 2025, Kumbh Mela 2025, Kumbh Mela, Prayagraj Kumbh Mela, Kumbh Mela 2025 Tour Packages, Kumbh Mela 2025 Important Dates, Kumbh Mela 2025 Nearby Cities"
+          content="Kumbh Mela 2025 Enquiry, Customize Kumbh Tour Packages, Prayagraj Mela Enquiry, Tailored Maha Kumbh Packages, Kumbh Mela Customized Tours, Enquiry for Kumbh Mela Packages, Prayagraj Tour Plans"
         />
+        <meta name="author" content="prayagrajkumbhmela.com" />
+        <meta
+          property="og:title"
+          content="Prayagraj Kumbh Mela 2025 Enquiry | Customize Your Kumbh Tour"
+        />
+        <meta
+          property="og:description"
+          content="Reach out to customize your Prayagraj Kumbh Mela 2025 tour package. Get personalized travel plans, guided tours, and exclusive accommodations for Maha Kumbh."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://prayagrajkumbhmela.com/enquiry"
+        />
+        <meta
+          property="og:image"
+          content="https://prayagrajkumbhmela.com/static/enquiry-banner.jpg"
+        />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com/enquiry" />
       </Helmet>
       <Navbar />
       <div className="MobileView flex flex-col md:flex-row justify-center mt-[10%]">

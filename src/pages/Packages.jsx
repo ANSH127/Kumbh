@@ -9,6 +9,7 @@ import Loadar from "../components/Loadar";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 export default function Packages() {
   const navigate = useNavigate();
@@ -17,7 +18,6 @@ export default function Packages() {
   const [filteredPackages2, setFilteredPackages2] = React.useState([]);
 
   const filterPackages = () => {
-
     if (userType === "Indian") {
       setFilteredPackages(data?.filter((pkg) => pkg.packageType === "indian"));
       setFilteredPackages2(data?.filter((pkg) => pkg.packageType === "indian"));
@@ -59,6 +59,38 @@ export default function Packages() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Prayagraj Kumbh Mela 2025 Packages | Maha Kumbh Tour Plans
+        </title>
+        <meta
+          name="description"
+          content="Explore the best Prayagraj Kumbh Mela 2025 tour packages and Maha Kumbh packages. Book affordable travel plans, accommodations, and guided tours now."
+        />
+        <meta
+          name="keywords"
+          content="Kumbh Mela 2025 Packages, Maha Kumbh Packages, Prayagraj Kumbh Mela 2025 Tour, Kumbh Mela Tour Packages, Kumbh Mela Travel Plans, Kumbh Mela Accommodation, Maha Kumbh 2025 Packages, Prayagraj Mela Guided Tours"
+        />
+        <meta name="author" content="prayagrajkumbhmela.com" />
+        <meta
+          property="og:title"
+          content="Prayagraj Kumbh Mela 2025 Packages | Maha Kumbh Tour Plans"
+        />
+        <meta
+          property="og:description"
+          content="Book the best Kumbh Mela 2025 tour packages with accommodations, travel plans, and guided tours for Prayagraj Kumbh Mela."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://prayagrajkumbhmela.com/packages"
+        />
+        <meta
+          property="og:image"
+          content="https://prayagrajkumbhmela.com/static/packages-banner.jpg"
+        />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com/packages" />
+      </Helmet>
       <Navbar />
       <div className="flex justify-center items-center mt-[10%] md:mt-[8%]  w-full">
         {/* Main Container */}

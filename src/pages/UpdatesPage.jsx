@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const UpdatesPage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -49,6 +50,39 @@ const UpdatesPage = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Prayagraj Kumbh Mela 2025 Updates - Latest News & Changes</title>
+        <meta
+          name="description"
+          content="Stay updated with the latest news, changes, and updates from Prayagraj Kumbh Mela 2025. Get real-time information about events, schedules, and more."
+        />
+        <meta
+          name="keywords"
+          content="Kumbh Mela 2025 updates, Prayagraj Kumbh Mela changes, Kumbh Mela news, Mela schedule changes, Prayagraj Mela 2025 latest news, Maha Kumbh updates, Kumbh Mela 2025 real-time information"
+        />
+        <meta name="author" content="prayagrajkumbhmela.com" />
+        <meta
+          property="og:title"
+          content="Prayagraj Kumbh Mela 2025 Updates - Latest News & Changes"
+        />
+        <meta
+          property="og:description"
+          content="Get the latest updates and real-time news about Prayagraj Kumbh Mela 2025, including schedule changes, events, and important announcements."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://prayagrajkumbhmela.com/melaupdates"
+        />
+        <meta
+          property="og:image"
+          content="https://prayagrajkumbhmela.com/static/mela-updates-banner.jpg"
+        />
+        <link
+          rel="canonical"
+          href="https://prayagrajkumbhmela.com/melaupdates"
+        />
+      </Helmet>
       <Navbar />
       <div className="  md:mt-20 lg:mt-20 ">
         {/* Header Section */}
@@ -157,7 +191,7 @@ const UpdatesPage = () => {
                 <h3 className="text-xl font-bold mb-2">{update.title}</h3>
                 <p className="text-gray-700 mb-4">{update.description}</p>
                 <p
-                  onClick={()=>handleDetailsClick(update)}
+                  onClick={() => handleDetailsClick(update)}
                   className="bg-[#F88820] text-white px-4 py-2 rounded-md font-bold w-fit cursor-pointer"
                 >
                   Read More

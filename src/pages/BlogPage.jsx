@@ -7,14 +7,12 @@ import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 
 function BlogPage() {
   const navigate = useNavigate();
   const [language, setLanguage] = React.useState("English");
   const [filteredData, setFilteredData] = React.useState([]);
-
-
 
   let { data, isLoading, error } = useQuery({
     queryKey: ["blog"],
@@ -31,16 +29,14 @@ function BlogPage() {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    
   }, []);
 
   const handleDetailsClick = (item) => {
     navigate(`/blog/${item._id}`, { state: { blogData: item } });
   };
 
-
   React.useEffect(() => {
-    if(isLoading) return;
+    if (isLoading) return;
     if (language === "English") {
       setFilteredData(data.filter((post) => post.language === "english"));
     } else {
@@ -51,6 +47,35 @@ function BlogPage() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Prayagraj Kumbh Mela 2025 Blog - News, Updates, and Travel Insights
+        </title>
+        <meta
+          name="description"
+          content="Stay updated with the latest news, events, and travel guides for Prayagraj Kumbh Mela 2025. Explore insightful blogs on rituals, important dates, and pilgrim tips."
+        />
+        <meta
+          name="keywords"
+          content="Prayagraj Kumbh Mela 2025 blog, Kumbh Mela 2025 news, Kumbh Mela travel tips, Prayagraj pilgrimage updates, Maha Kumbh Mela articles, Kumbh Mela dates 2025, Kumbh Mela guides"
+        />
+        <meta name="author" content="prayagrajkumbhmela.com" />
+        <meta
+          property="og:title"
+          content="Prayagraj Kumbh Mela 2025 Blog - Latest News, Guides & Insights"
+        />
+        <meta
+          property="og:description"
+          content="Discover informative blogs about Prayagraj Kumbh Mela 2025, including rituals, travel tips, important updates, and detailed guides for pilgrims and tourists."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prayagrajkumbhmela.com/blog" />
+        <meta
+          property="og:image"
+          content="https://prayagrajkumbhmela.com/static/blog-banner.jpg"
+        />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com/blog" />
+      </Helmet>
       <Navbar />
       <div className="bg-[#F4F2E9] pt-10 md:pt-0">
         <div className="bg-[#F4F2E9] py-3 md:py-5 md:mt-[5vw]">
@@ -78,7 +103,9 @@ function BlogPage() {
             </div>
 
             <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 ml-6"></div>
-            <span className="mx-3 hidden md:block">www.prayagrajkumbhmela.com</span>
+            <span className="mx-3 hidden md:block">
+              www.prayagrajkumbhmela.com
+            </span>
           </div>
 
           <div className="h-[2px] md:h-[3px] bg-black md:mb-4"></div>
@@ -160,9 +187,7 @@ function BlogPage() {
           <div className="w-[90%] mx-auto py-8 px-4 md:px-4 bg-[#F4F2E9]">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10 grid- flex-wrap">
               {filteredData.map((post, index) => (
-                <div 
-                onClick={() => handleDetailsClick(post)}
-                 key={index}>
+                <div onClick={() => handleDetailsClick(post)} key={index}>
                   <div className="bg-[#F4F2E9] rounded-lg h-fit shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 ">
                     <img
                       src={builder.image(post.image).url()}
