@@ -419,7 +419,7 @@ return (
 {/* Map Section */}
 <section className="relative" aria-labelledby="map-heading">
   {/* Mobile View */}
-  <div className="w-full h-[61vw] md:hidden">
+  <div className="w-full h-[61vw] lg:hidden">
     <h2 id="map-heading" className="Satellite text-center font-afacad font-semibold my-1 sm:text-[3vw] sm:font-bold" style={{ fontFamily: "Afacad, sans-serif" }}>
       Satellite Map
     </h2>
@@ -437,7 +437,7 @@ return (
   </div>
 
   {/* Web View */}
-  <div className="hidden md:flex md:px-14 lg:px-14">
+  <div className="hidden lg:flex md:px-14 lg:px-14">
     <div className="relative w-full md:w-[68vw] lg:w-[62vw] lg:m-4 md:my-4 md:h-[500px] h-auto">
       <div id="mainMap" className="w-full h-full rounded-3xl">
         <iframe

@@ -122,9 +122,35 @@ const ImportantDates = () => {
         </div>
       </section>
 
+      {/* tab view */}
+      <section
+        className="w-[90%] flex mx-auto justify-center mt-[-34vw] hidden md:flex lg:hidden"
+        aria-labelledby="important-dates-mobile-title"
+      >
+        <div className="w-[90%] h-auto bg-[#F88820] rounded-[3vw] z-20 py-[2vw] px-[4vw] flex flex-col items-center shadow-lg">
+          <h1 className="font-bold mb-2 md:my-0 sm:font-semibold text-sm md:text-lg text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Shahi Snan Dates of Mahakumbh 2025
+          </h1>
+
+          <div className="grid grid-cols-4 md:gap-[2vw] w-full">
+            {dates.map((date, index) => (
+              <article key={index} className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center bg-[#D9D9D9] rounded-[4vw] px-[4vw] py-2">
+                  <p className="text-2xl font-extrabold leading-none">{date.day}</p>
+                  <p className="text-sm font-bold leading-none text-center">{date.month}</p>
+                </div>
+                <div className="text-xs font-medium text-center leading-3">
+                  <p>{date.event}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Desktop View */}
       <section
-        className="w-full flex justify-center mt-[-30%] sm:mt-[-8%] hidden md:flex"
+        className="w-full flex justify-center mt-[-30%] sm:mt-[-8%] hidden lg:flex"
         aria-labelledby="shahi-snan-desktop-title"
       >
         <div
