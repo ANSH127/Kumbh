@@ -1,4 +1,3 @@
-
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -95,9 +94,13 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
       >
         <Fade in={open}>
           <Box sx={style} className="w-full md:w-[70%] overflow-y-auto">
-            <h1 className="text-center text-[5vw] md:text-[3vw] font-bold mb-6 font-serif">
+            <h1 className="text-center text-[5vw] md:text-[3vw] font-bold mb-2 font-serif">
               Enquiry Form
             </h1>
+
+            <h2 className="text-center text-base md:text-base font-bold mb-6 font-serif">
+              (Want Package According to Your Choice Fill this Form or Contact Us)
+            </h2>
 
             <div className="absolute top-2 right-2">
               <CloseIcon fontSize={"30px"} onClick={handleClose} className="text-black  cursor-pointer
@@ -168,7 +171,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
                   required
                 />
                 <small className="text-sm text-gray-700">
-                  Format: +XX ISD CODE PHONE
+                  Format: +XX ISD CODE PHONE (space between both)
                 </small>
               </div>
 
@@ -242,7 +245,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
               value={msg}
               onChange={(e) => setMsg(e.target.value)}
               placeholder="Enter your Specific Requirment"
-              className="w-full border-b-2 border-black bg-transparent focus:outline-none focus:border-blue-800 py-2 text-black placeholder:text-black"
+              className="w-full border-b-2 border-black bg-transparent focus:outline-none focus:border-blue-800 pt-2 text-black placeholder:text-black"
               required
             />
           </div>
@@ -258,7 +261,7 @@ export default function EnquiryModel({open,handleOpen,handleClose}) {
             </form>
 
             <p className="text-center md:text-xl text-lg mt-4">
-              *After filling this form we will contact you within the next 6
+              *After filling this form we will contact you within the next 12
               hours.
             </p>
 

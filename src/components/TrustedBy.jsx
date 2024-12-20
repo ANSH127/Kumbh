@@ -45,36 +45,75 @@ const data = [
   // },
 ];
 
-export default function TrustedBy() {
-  return (
-    <div className="w-11/12 mx-auto my-8 bg-[#FF9933] rounded-2xl shadow-lg p-4">
-      <h1 className="text-3xl font-bold text-center text-black">
-        Trusted by 500+ Devotees
-      </h1>
-      <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4 mt-4 md:p-4">
+// export default function TrustedBy() {
+//   return (
+//     <div className="w-11/12 mx-auto my-8 bg-[#FF9933] rounded-2xl shadow-lg p-4">
+//       <h3 className="text-3xl font-bold text-center text-black">
+//         Trusted by 500+ Devotees
+//       </h3>
+//       <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4 mt-4 md:p-4">
         
 
+//         {data.map((review, index) => (
+//           <div
+//             key={index}
+//             className="bg-[#F4F2E9] p-3 md:min-h-[225px]   h-fit md:p-4 rounded-lg shadow-lg text-center"
+//           >
+//             <p className="mt-2  text-sm md:text-base text-justify">
+//               &quot;{review.description}&quot;
+//             </p>
+//             <Rating
+//               name="half-rating-read"
+//               value={review.rating}
+//               precision={0.5}
+//               readOnly
+//               className=" pt-1 md:pt-2"
+//             />
+//             <h3 className="text-sm md:text-xl font-bold text-black text-center">
+//               ~{review.name}
+//             </h3>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+export default function TrustedBy() {
+
+
+  return (
+    <section className="w-11/12 mx-auto my-8 bg-[#FF9933] rounded-2xl shadow-lg p-6">
+      {/* Section Header */}
+      <h2 className="text-3xl font-bold text-center text-black">
+        Trusted by 500+ Devotees (2019 Kumbh Mela)
+      </h2>
+
+      {/* Review Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {data.map((review, index) => (
-          <div
+          <article
             key={index}
-            className="bg-[#F4F2E9] p-3 md:min-h-[225px]   h-fit md:p-4 rounded-lg shadow-lg text-center"
+            className="bg-[#F4F2E9] p-4 rounded-lg shadow-lg flex flex-col items-center hover:shadow-xl transition-shadow"
           >
-            <p className="mt-2  text-sm md:text-base text-justify">
+            <blockquote className="mt-2 text-sm md:text-base text-gray-700 italic text-center">
               &quot;{review.description}&quot;
-            </p>
+            </blockquote>
             <Rating
-              name="half-rating-read"
+              name={`rating-${index}`}
               value={review.rating}
               precision={0.5}
               readOnly
-              className=" pt-1 md:pt-2"
+              className="pt-2"
             />
-            <h1 className="text-sm md:text-xl font-bold text-black text-center">
+            <p className="text-sm md:text-base font-bold text-black mt-4">
               ~{review.name}
-            </h1>
-          </div>
+            </p>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

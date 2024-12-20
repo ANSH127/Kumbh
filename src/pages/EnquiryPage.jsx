@@ -2,9 +2,10 @@ import Navbar from "../components/Navbar";
 import A1 from "../assets/img/Hero3.jpeg";
 import React, { useState } from "react";
 import Footer from "../components/Footer";
+import { Helmet } from "react-helmet";
+
 import { enquiryCollection } from "../api/firebase";
 import { addDoc } from "firebase/firestore";
-import { Helmet } from "react-helmet";
 
 export default function EnquiryPage() {
   const [showModal, setShowModal] = useState(false);
@@ -92,6 +93,7 @@ export default function EnquiryPage() {
           property="og:url"
           content="https://prayagrajkumbhmela.com/enquiry"
         />
+        
         <meta
           property="og:image"
           content="https://prayagrajkumbhmela.com/static/enquiry-banner.jpg"
@@ -103,15 +105,15 @@ export default function EnquiryPage() {
         <img
           className="w-[90%] md:w-[50%] rounded-t-2xl md:rounded-tr-none md:rounded-l-2xl mx-auto md:mx-0"
           src={A1}
-          alt=""
+          alt="Prayagraj Mahakumbh mela 2025"
         />
 
         <div className="bg-[#F88820] w-[90%] md:w-[30%] rounded-b-2xl md:rounded-bl-none md:rounded-r-2xl flex flex-col justify-center mx-auto md:mx-0 py-4">
           <h1 className="text-center text-[5vw] md:text-[3vw] font-regular md:mb-6 font-serif">
             Tour Enquiry
           </h1>
-          <h1 className="font-regular text-[2.5vw] md:text-[1.5vw] text-center">
-            Home | Tour Enquiry
+          <h1 className="font-medium text-[2.5vw] md:text-[1.5vw] text-center">
+            MahaKumbh 2025
           </h1>
         </div>
       </div>
@@ -183,7 +185,7 @@ export default function EnquiryPage() {
               required
             />
             <small className="text-sm text-gray-700">
-              Format: +XX ISD CODE PHONE
+              Format: +XX ISD CODE PHONE (space after country code)
             </small>
           </div>
 

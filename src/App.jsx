@@ -12,6 +12,10 @@ import UpdateDetailPage from "./pages/UpdateDetailPage";
 import { useParams } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import AboutUs from "./pages/AboutUs";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +32,13 @@ function App() {
           <Route path="/updates" element={<UpdatesPage />} />
           <Route path="/blog/:id" element={<BlogWrapper />} />
           <Route path="/update/:id" element={<UpdateWrapper />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/RefundPolicy" element={<RefundPolicy />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+
+
+
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />

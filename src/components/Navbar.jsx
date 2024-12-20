@@ -99,7 +99,7 @@ const Navbar = () => {
       {/* Social Media Links */}
       <div className="flex space-x-6 justify-center mt-8">
         <a
-          href="https://www.facebook.com/"
+          href="https://www.facebook.com/people/Prayagraj-Kumbh-Mela/61569489230062/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl"
@@ -107,7 +107,7 @@ const Navbar = () => {
           <i className="fab fa-facebook-square"></i>
         </a>
         <a
-          href="https://www.instagram.com/"
+          href="https://www.instagram.com/prayagraj.kumbhmela/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl"
@@ -115,7 +115,7 @@ const Navbar = () => {
           <i className="fab fa-instagram"></i>
         </a>
         <a
-          href="https://twitter.com/"
+          href="https://x.com/PrayagrajIndia"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl"
@@ -123,7 +123,7 @@ const Navbar = () => {
           <i className="fab fa-twitter"></i>
         </a>
         <a
-          href="https://www.linkedin.com/"
+          href="https://www.linkedin.com/in/prayagraj-kumbh-mela-176b03339/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl"
@@ -135,8 +135,10 @@ const Navbar = () => {
       {/* Contact Section */}
       <div className="flex flex-col mt-8 bg-white text-black px-2 rounded-lg shadow-lg mx-2">
         <p className="font-bold text-center">Need Help?</p>
-        <p>Call us: +91 8932951318</p>
-        <p>Mail us: kumbhindia@gmail.com</p>
+        <p className='text-xs text-center'>Call: +91 8932951318</p>
+        <span className='text-xs text-center'>Mail:
+        <p className='text-xs text-center'> kumbhexperienceindia@gmail.com</p>
+        </span>
       </div>
       </div>
     </nav>

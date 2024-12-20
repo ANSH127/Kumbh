@@ -53,7 +53,7 @@ export default function PackagesDetailPage() {
             {/* Overlay color for better readability */}
             <img
               src={PackageTop}
-              alt="Background"
+              alt="Mahakumbh"
               className="w-full h-full object-cover"
             />
             {/* Overlay Text */}
@@ -124,7 +124,7 @@ export default function PackagesDetailPage() {
                         ? builder.image(packageData?.image).url()
                         : Hero1
                     }
-                    alt="Package"
+                    alt="Mahakumbh Tour Packages"
                     className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>

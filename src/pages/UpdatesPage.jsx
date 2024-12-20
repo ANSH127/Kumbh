@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { client, builder } from "../api/SanityClient";
+import { builder,client } from "../api/SanityClient";
 import { useNavigate } from "react-router-dom";
 import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
-import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
-
+import { useQuery } from "@tanstack/react-query";
 const UpdatesPage = () => {
   const [activeTab, setActiveTab] = useState(0);
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ const UpdatesPage = () => {
     setActiveTab(index);
     // Add functionality to display relevant news based on the tab clicked
   };
-
   let { data, isLoading, error } = useQuery({
     queryKey: ["melaupdate"],
     queryFn: async () => {
@@ -65,11 +63,13 @@ const UpdatesPage = () => {
           property="og:title"
           content="Prayagraj Kumbh Mela 2025 Updates - Latest News & Changes"
         />
+        
         <meta
           property="og:description"
           content="Get the latest updates and real-time news about Prayagraj Kumbh Mela 2025, including schedule changes, events, and important announcements."
         />
         <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com/updates" />
         <meta
           property="og:url"
           content="https://prayagrajkumbhmela.com/melaupdates"
@@ -78,12 +78,10 @@ const UpdatesPage = () => {
           property="og:image"
           content="https://prayagrajkumbhmela.com/static/mela-updates-banner.jpg"
         />
-        <link
-          rel="canonical"
-          href="https://prayagrajkumbhmela.com/melaupdates"
-        />
+
       </Helmet>
       <Navbar />
+      
       <div className="  md:mt-20 lg:mt-20 ">
         {/* Header Section */}
         <div className="bg-[#F88820] p-6 text-center text-white">
@@ -164,7 +162,7 @@ const UpdatesPage = () => {
                 language === "Hindi"
                   ? "bg-[#F88820] text-white"
                   : "bg-white text-gray-700"
-              } hover:bg-[#F88820] hover:text-white transition duration-200`}
+              } rounded-r-md hover:bg-[#F88820] hover:text-white transition duration-200`}
             >
               Hindi
             </label>
@@ -185,7 +183,7 @@ const UpdatesPage = () => {
               >
                 <img
                   src={builder.image(update.image).url()}
-                  alt="News"
+                  alt="Prayagraj News"
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />
                 <h3 className="text-xl font-bold mb-2">{update.title}</h3>

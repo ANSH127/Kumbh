@@ -1,20 +1,21 @@
 import Navbar from "../components/Navbar";
-import Logo from "../assets/img/logo.png";
-import { Link } from "react-router-dom";
-import { client, builder } from "../api/SanityClient";
+import Logo from "../assets/img/logo.png"; 
+import {  client,builder } from "../api/SanityClient";
 import React from "react";
 import Loadar from "../components/Loadar";
 import Footer from "../components/Footer";
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import CoverImage from "../assets/img/blogcover.jpg";
+import { useQuery } from "@tanstack/react-query";
+
+
 
 function BlogPage() {
   const navigate = useNavigate();
   const [language, setLanguage] = React.useState("English");
   const [filteredData, setFilteredData] = React.useState([]);
-
+  
   let { data, isLoading, error } = useQuery({
     queryKey: ["blog"],
     queryFn: async () => {
@@ -87,7 +88,7 @@ function BlogPage() {
             <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 mr-6"></div>
 
             <div
-              className="flex items-center text-[5.5vw] md:text-[3vw]"
+              className="flex items-center text-[5.5vw] md:text-[2.4vw] lg:text-[3vw]"
               style={{ fontFamily: "Fraunces, serif" }}
             >
               <h1 className="font-bold tracking-[0.25em] leading-none">
@@ -95,7 +96,7 @@ function BlogPage() {
               </h1>
               <img
                 src={Logo}
-                alt="Logo"
+                alt="Prayagraj kumbh mela 2025"
                 className="w-[6.5vw] md:w-[3vw] h-[6.5vw] md:h-[3vw] inline-block relative -top-[0.2vw] ml-[-0.5vw] mr-[0.1vw]"
               />
               <h1 className="font-bold tracking-[0.25em] leading-none">
@@ -114,7 +115,8 @@ function BlogPage() {
             className="text-xl text-center font-bold tracking-wider md:mb-4"
             style={{ fontFamily: "Fraunces, serif" }}
           >
-            PRAYAGRAJ MAHAKUMBH
+            <h1> PRAYAGRAJ MAHAKUMBH</h1>
+           
           </div>
           <div className="h-[2px] md:h-[3px] bg-black"></div>
         </div>
@@ -126,16 +128,27 @@ function BlogPage() {
           }}
         >
           <div className="absolute inset-0 opacity-50"></div>
-          <div className="relative z-10 text-white text-center p-4">
+
+          <div className="relative z-10 text-[#F4F2E9] text-center p-4">
             <h1 className="text-3xl sm:text-6xl lg:text-8xl font-bold mb-16 md:mb-16">
               MAHAKUMBH 2025
             </h1>
+            {/* <div className=" w-fit lg:ml-48 ">
+            <p className="text-xs md:text-xl lg:text-2xl text-center lg:text-left font-bold ">
+              EXPERIENCE THE SPIRITUALITY OF KUMBH MELA
+            </p>
+            <p className="text-xs md:text-xl lg:text-2xl text-center font-bold">
+              WITH PRAYAGRAJKUMBHMELA.COM
+            </p>
+            </div> */}
             <p className="text-sm md:text-xl lg:text-2xl">
               EXPERIENCE THE SPIRITUALITY OF LIFE TIME
             </p>
             <p className="text-sm md:text-xl lg:text-2xl">
               WITH PRAYAGRAJKUMBHMELA.COM
             </p>
+
+           
           </div>
         </div>
 
@@ -175,7 +188,7 @@ function BlogPage() {
                 language === "Hindi"
                   ? "bg-[#F88820] text-white"
                   : "bg-white text-gray-700"
-              } hover:bg-[#F88820] hover:text-white transition duration-200`}
+              } rounded-r-md hover:bg-[#F88820] hover:text-white transition duration-200`}
             >
               Hindi
             </label>

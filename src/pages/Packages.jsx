@@ -1,15 +1,13 @@
 import PackageTop from "../assets/img/Packagetop.png";
 import Navbar from "../components/Navbar";
-import Hero3 from "../assets/img/Hero3.jpeg";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { client, builder } from "../api/SanityClient";
+import { builder,client } from "../api/SanityClient";
 import React from "react";
 import Loadar from "../components/Loadar";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
+
 
 export default function Packages() {
   const navigate = useNavigate();
@@ -34,7 +32,6 @@ export default function Packages() {
   const handleDetailsClick = (item) => {
     navigate(`/packages/${item._id}`, { state: { packageData: item } });
   };
-
   let { data, isLoading, error } = useQuery({
     queryKey: ["tourpackage"],
     queryFn: async () => {
@@ -43,7 +40,6 @@ export default function Packages() {
     },
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
-
   if (error) {
     console.log(error);
   }
@@ -76,6 +72,8 @@ export default function Packages() {
           property="og:title"
           content="Prayagraj Kumbh Mela 2025 Packages | Maha Kumbh Tour Plans"
         />
+        <link rel="canonical" href="https://prayagrajkumbhmela.com/packages" />
+
         <meta
           property="og:description"
           content="Book the best Kumbh Mela 2025 tour packages with accommodations, travel plans, and guided tours for Prayagraj Kumbh Mela."
@@ -89,20 +87,22 @@ export default function Packages() {
           property="og:image"
           content="https://prayagrajkumbhmela.com/static/packages-banner.jpg"
         />
-        <link rel="canonical" href="https://prayagrajkumbhmela.com/packages" />
+
       </Helmet>
+
       <Navbar />
+
       <div className="flex justify-center items-center mt-[10%] md:mt-[8%]  w-full">
         {/* Main Container */}
-        <div className=" w-full md:w-[90%]  md:rounded-3xl shadow-lg overflow-hidden">
+        <div className="w-[90%] rounded-xl md:rounded-3xl shadow-lg overflow-hidden">
           {/* Top Section with Background Image and Overlay Text */}
-          <div className="relative h-48 md:h-64">
+          <div className="relative h-40 md:h-64">
             {/* Background Image (Replace with actual image) */}
             <div className="absolute inset-0 bg-black opacity-30"></div>{" "}
             {/* Overlay color for better readability */}
             <img
               src={PackageTop}
-              alt="Background"
+              alt="Prayagraj kumbhmela 2025"
               className="w-full h-full object-cover"
             />
             {/* Overlay Text */}
@@ -111,7 +111,7 @@ export default function Packages() {
                 MAHAK<span className="text-yellow-400 font-bold">U</span>MBH
                 &nbsp;&nbsp;PACKAGES
               </h1>
-              <p className="text-[2vw] font-medium mt-2">
+              <p className="text-[3vw] md:text-[2vw] font-medium mt-2">
                 All inclusive tour Packages!!
               </p>
             </div>
@@ -121,24 +121,27 @@ export default function Packages() {
           <div className="bg-[#F88820] p-4 md:p-6  text-center flex flex-row justify-around  space-y-0 font-serif">
             {/* Event Card 1 */}
             <div className="space-y-2 text-black">
-              <h2 className="text-[2.5vw] font-semibold">Paush Poornima</h2>
-              <p className="text-[1.5vw]">13th January 2025</p>
+              <h2 className="text-[2.8vw] md:text-[2.5vw] font-semibold">Paush Poornima</h2>
+              <p className="text-[2.5vw] md:text-[1.5vw]">13th January 2025</p>
             </div>
 
             {/* Event Card 2 */}
             <div className="space-y-2 text-black">
-              <h2 className="text-[2.5vw] font-semibold">Makar Sankranti</h2>
-              <p className="text-[1.5vw]">14th January 2025</p>
+              <h2 className="text-[2.8vw] md:text-[2.5vw] font-semibold">Makar Sankranti</h2>
+              <p className="text-[2.5vw] md:text-[1.5vw]">14th January 2025</p>
             </div>
 
             {/* Event Card 3 */}
             <div className="space-y-2 text-black">
-              <h2 className="text-[2.5vw] font-semibold">Mauni Amavasya</h2>
-              <p className="text-[1.5vw]">29th January 2025</p>
+              <h2 className="text-[2.8vw] md:text-[2.5vw] font-semibold">Mauni Amavasya</h2>
+              <p className="text-[2.5vw] md:text-[1.5vw]">29th January 2025</p>
             </div>
           </div>
         </div>
       </div>
+
+
+
 
       <div className="flex justify-center mt-4">
         <div className="inline-flex rounded-md shadow-sm" role="group">
@@ -199,7 +202,7 @@ export default function Packages() {
                 >
                   <img
                     src={builder.image(item.image).url()}
-                    alt=""
+                    alt="Prayagraj kumbhmela 2025"
                     className="rounded-t-2xl w-auto h-[140px] 
               md:h-[200px] object-cover object-center shadow-lg transition duration-300 hover:scale-105
                "
@@ -224,7 +227,7 @@ export default function Packages() {
                         className="text-xs
                   
 
-                   md:text-lg font-semibold text-black text-center"
+                   md:text-lg font-light text-black text-center"
                       >
                         {userType === "Indian" ? "₹" : "$"}
                         {item.price}
@@ -232,14 +235,14 @@ export default function Packages() {
                     </div>
                     <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
                       <button
-                        className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                        className="bg-white px-2 rounded font-bold  text-[8px] md:text-base text-black md:font-semibold md:px-3 md:py-2 md:rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                         onClick={() => handleDetailsClick(item)}
                       >
                         Details →
                       </button>
 
                       <button
-                        className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                        className="bg-white px-2 rounded font-bold text-[8px] py-1 md:text-base text-black md:font-semibold md:px-3 md:py-2 md:rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                         onClick={() => navigate("/enquiry")}
                       >
                         Enquire Now →
@@ -249,10 +252,13 @@ export default function Packages() {
                 </div>
               ))}
           </div>
-          <div className=" w-11/12   rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14">
-            <h1 className="text-[5vw] md:text-[2.8vw] text-center font-bold my-6 md:my-[60px]">
+          <div className=" md:w-8/12 w-full  md:rounded-2xl mx-auto m-4  bg-[#FDAB57] flex flex-col justify-center  h-14">
+            <h2 className="text-[6vw] md:text-[2.8vw] text-center font-bold my-4 md:my-[60px]">
               Nearby Cities Packages
-            </h1>
+            </h2>
+
+
+
 
             {/* Card Template */}
           </div>
@@ -266,7 +272,7 @@ export default function Packages() {
                 >
                   <img
                     src={builder.image(item.image).url()}
-                    alt=""
+                    alt="Prayagraj kumbh mela 2025"
                     className="rounded-t-2xl w-auto h-[140px] 
               md:h-[200px] object-cover object-center shadow-lg transition duration-300 hover:scale-105
                "
@@ -289,21 +295,21 @@ export default function Packages() {
                         className="text-xs
                   
 
-                   md:text-lg font-semibold text-black text-center"
+                   md:text-lg font-light text-black text-center"
                       >
                         ₹{item.price}
                       </del>
                     </div>
                     <div className="flex justify-evenly gap-2 mx-2 md:mx-0">
                       <button
-                        className="bg-white px-1 text-xs  py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                        className="bg-white px-2 text-[8px] rounded font-bold  py-1 md:text-base text-black md:font-semibold md:px-3 md:py-2 md:rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                         onClick={() => handleDetailsClick(item)}
                       >
                         Details →
                       </button>
 
                       <button
-                        className="bg-white px-1   text-xs py-1 md:text-base text-black font-semibold md:px-3 md:py-2 rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
+                        className="bg-white px-2 rounded font-bold text-[8px] py-1 md:text-base text-black md:font-semibold md:px-3 md:py-2 md:rounded-lg shadow hover:bg-gray-200 hover:shadow-md transition duration-300"
                         onClick={() => navigate("/enquiry")}
                       >
                         Enquire Now →

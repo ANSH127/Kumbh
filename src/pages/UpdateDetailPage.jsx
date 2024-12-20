@@ -1,21 +1,19 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-import { client, builder } from "../api/SanityClient";
+import {  builder,client } from "../api/SanityClient";
 import { useNavigate } from "react-router-dom";
-import Loadar from "../components/Loadar";
 import PortableText from "react-portable-text";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
 
 const UpdateDetailPage = () => {
   const location = useLocation();
 
   const navigate = useNavigate();
   const { updateData } = location.state || {};
-
   const {
     data: latestUpdates,
     isLoading,
@@ -67,7 +65,7 @@ const UpdateDetailPage = () => {
           {updateData && updateData.image && (
             <img
               src={builder.image(updateData?.image).url()}
-              alt="Article Image"
+              alt="Prayagraj News"
               className="w-full rounded-lg mb-6"
             />
           )}
@@ -132,7 +130,7 @@ const UpdateDetailPage = () => {
                 >
                   <img
                     src={builder.image(update.image).url()}
-                    alt="News Image"
+                    alt="Prayagraj Mahakumbh News"
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-4">

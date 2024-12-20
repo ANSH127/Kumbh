@@ -1,17 +1,15 @@
 import React from "react";
 import Logo from "../assets/img/logo.png";
-import { client, builder } from "../api/SanityClient";
-import { useParams } from "react-router-dom";
+import {  client,builder } from "../api/SanityClient";
 import PortableText from "react-portable-text";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
 
 const BlogDetailPage = () => {
-  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const { blogData } = location.state || {};
@@ -55,13 +53,13 @@ const BlogDetailPage = () => {
           <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 mr-6"></div>
 
           <div
-            className="flex items-center text-[5.5vw] md:text-[3vw]"
+            className="flex items-center text-[5.5vw] md:text-[2.4vw] lg:text-[3vw]"
             style={{ fontFamily: "Fraunces, serif" }}
           >
             <h1 className="font-bold tracking-[0.25em] leading-none">MAHAK</h1>
             <img
               src={Logo}
-              alt="Logo"
+              alt="Prayagraj Mahakumbh Mela 2025"
               className="w-[6.5vw] md:w-[3vw] h-[6.5vw] md:h-[3vw] inline-block relative -top-[0.2vw] ml-[-0.5vw] mr-[0.1vw]"
             />
             <h1 className="font-bold tracking-[0.25em] leading-none">
@@ -70,7 +68,7 @@ const BlogDetailPage = () => {
           </div>
 
           <div className="h-12 w-[0.75vw] md:w-1 bg-black md:mx-4 ml-6"></div>
-          <span className="mx-3 hidden md:block">www.mahakumbh.com</span>
+          <span className="mx-3 hidden md:block">www.prayagrajkumbhmela.com</span>
         </div>
 
         <div className="h-[2px] md:h-[3px] bg-black md:mb-4"></div>

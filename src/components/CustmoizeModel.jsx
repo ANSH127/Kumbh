@@ -57,7 +57,7 @@ export default function CustmoizeModel({open,handleOpen,handleClose}) {
 
             <div className="flex justify-center">
                 <button
-                    className="bg-white text-black px-4 py-2 rounded-md mr-4"
+                    className="bg-white font-bold shadow-xl text-black px-4 py-2 rounded-xl mr-4"
                     onClick={
                         () => {
                             handleClose();
