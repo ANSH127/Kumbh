@@ -16,12 +16,14 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import AboutUs from "./pages/AboutUs";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -42,6 +44,7 @@ function App() {
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
+      <SpeedInsights/>
 
     </QueryClientProvider>
   );
