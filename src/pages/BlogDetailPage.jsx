@@ -122,8 +122,14 @@ const BlogDetailPage = () => {
                       {...props}
                     />
                   ),
+                  h3: (props) => (
+                    <h3
+                      className="text-xl font-bold text-gray-800"
+                      {...props}
+                    />
+                  ),
                   normal: (props) => (
-                    <p className="text-gray-700 text-justify" {...props} />
+                    <p className="text-gray-700 text-justify py-2" {...props} />
                   ),
                   link: (props) => (
                     <a
@@ -133,6 +139,7 @@ const BlogDetailPage = () => {
                       {props.children}
                     </a>
                   ),
+
                   image: (props) => {
                     return (
                       <div className="flex justify-center items-center py-5">
