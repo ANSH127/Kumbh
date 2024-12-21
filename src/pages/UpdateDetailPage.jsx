@@ -62,13 +62,7 @@ const UpdateDetailPage = () => {
           >
             &larr; Back to Main Page
           </p>
-          {updateData && updateData.image && (
-            <img
-              src={builder.image(updateData?.image).url()}
-              alt="Prayagraj News"
-              className="w-full rounded-lg mb-6"
-            />
-          )}
+          
           <h1 className="text-3xl font-bold text-orange-500 mb-4">
             {updateData?.title}
           </h1>
