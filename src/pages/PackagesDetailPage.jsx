@@ -407,7 +407,7 @@ export default function PackagesDetailPage() {
             {/* Price Section  grid*/}
 
             {/* Price Section grid */}
-            <div className="relative md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] md:pr-16">
+            <div className="relative md:col-span-3 mr-[6%] ml-[6%] md:mr-[13%] md:ml-[8%] lg:pr-16">
               <div className="w-full flex flex-col gap-6 md:sticky md:top-6  ">
                 {/* Price box */}
                 <div className="rounded-xl md:rounded-3xl shadow-md text-center overflow-hidden fixed bottom-5  w-[90%] md:w-full z-10 bg-white md:static md:top-6 md:bottom-0  md:z-0">
